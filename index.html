@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roof Fortress | Roofing Rejuvenation Experts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #4DBFBF;
+      --primary-dk: #3aa8a8;
+      --primary-lt: #e8f7f7;
+      --secondary:  #0D1B2A;
+      --tertiary:   #8B5E3C;
+      --neutral:    #1A1A1A;
+      --gray-1:     #f4f6f8;
+      --gray-2:     #e2e8ed;
+      --gray-3:     #9aa5b4;
+      --white:      #ffffff;
+      --radius:     6px;
+      --radius-lg:  12px;
+      --font-head:  'Manrope', sans-serif;
+      --font-body:  'Inter', sans-serif;
+      --shadow-sm:  0 1px 4px rgba(13,27,42,.08);
+      --shadow-md:  0 4px 20px rgba(13,27,42,.12);
+      --shadow-lg:  0 12px 48px rgba(13,27,42,.16);
+      --transition: 0.22s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--neutral);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius);
+      font-family: var(--font-body); font-weight: 600; font-size: 15px;
+      cursor: pointer; border: none; text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--primary); color: var(--white);
+      box-shadow: 0 4px 16px rgba(77,191,191,.35);
+    }
+    .btn-primary:hover { background: var(--primary-dk); box-shadow: 0 6px 24px rgba(77,191,191,.45); }
+    .btn-outline {
+      background: transparent; color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+    .btn-outline:hover { background: var(--secondary); color: var(--white); }
+    .btn-outline-white {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,.55);
+    }
+    .btn-outline-white:hover { background: var(--white); color: var(--secondary); }
+
+    .tag {
+      display: inline-block; padding: 4px 14px;
+      background: var(--primary-lt); color: var(--primary-dk);
+      border-radius: 100px; font-size: 13px; font-weight: 600;
+      letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .tag-earth {
+      background: #f5ede6; color: var(--tertiary);
+    }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+    .section-title {
+      font-family: var(--font-head); font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; line-height: 1.15; color: var(--secondary);
+    }
+    .section-sub { font-size: 17px; color: var(--gray-3); margin-top: 14px; max-width: 580px; }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: .6; }
+      100% { transform: scale(1.5); opacity: 0;  }
+    }
+    .anim-fade-up  { animation: fadeUp .65s ease both; }
+    .anim-delay-1  { animation-delay: .1s; }
+    .anim-delay-2  { animation-delay: .22s; }
+    .anim-delay-3  { animation-delay: .34s; }
+    .anim-delay-4  { animation-delay: .46s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-2);
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-head); font-weight: 800; font-size: 20px;
+      color: var(--secondary); text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--secondary);
+      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; fill: var(--primary); }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 15px; font-weight: 500; color: var(--neutral);
+      text-decoration: none; transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .nav-phone {
+      font-weight: 600; font-size: 15px; color: var(--secondary);
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-phone:hover { color: var(--primary); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--secondary); border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      background: var(--white); border-top: 1px solid var(--gray-2);
+      padding: 16px 24px 24px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 12px 0; font-size: 16px; font-weight: 500;
+      color: var(--neutral); text-decoration: none;
+      border-bottom: 1px solid var(--gray-2);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .btn { margin-top: 16px; justify-content: center; }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 68px;
+      background: linear-gradient(160deg, var(--secondary) 0%, #112233 55%, #1a3a4a 100%);
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234DBFBF' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 80px 0; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(77,191,191,.15); border: 1px solid rgba(77,191,191,.3);
+      color: var(--primary); padding: 6px 16px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px; background: var(--primary); border-radius: 50%;
+      position: relative;
+    }
+    .hero-badge-dot::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background: var(--primary); animation: pulse-ring 1.8s ease-out infinite;
+    }
+    .hero h1 {
+      font-family: var(--font-head); font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800; line-height: 1.1; color: var(--white); margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 18px; color: rgba(255,255,255,.72); line-height: 1.7;
+      margin-bottom: 36px; max-width: 500px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+    .hero-trust {
+      display: flex; align-items: center; gap: 20px;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .hero-trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.6); font-size: 14px; }
+    .hero-trust-item svg { width: 18px; height: 18px; fill: var(--primary); }
+    .hero-visual {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .hero-card-wrap {
+      position: relative; width: 100%; max-width: 440px;
+    }
+    .hero-main-card {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(20px); border-radius: var(--radius-lg);
+      padding: 32px; color: var(--white);
+    }
+    .hero-card-roof {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #1e3a4a 0%, #2d5a6e 50%, var(--primary) 100%);
+      border-radius: var(--radius); margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-card-roof svg { width: 80px; height: 80px; fill: rgba(255,255,255,.2); }
+    .hero-card-roof::after {
+      content: 'BEFORE → AFTER';
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,.5); color: var(--primary); font-size: 11px;
+      font-weight: 700; letter-spacing: .1em; padding: 4px 12px; border-radius: 100px;
+    }
+    .hero-card-stat { display: flex; justify-content: space-between; gap: 16px; }
+    .hero-stat-item { text-align: center; }
+    .hero-stat-item .num {
+      font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--primary);
+    }
+    .hero-stat-item .lbl { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 2px; }
+    .floating-badge {
+      position: absolute; background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow-lg); padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .floating-badge-tl { top: -16px; left: -24px; }
+    .floating-badge-br { bottom: -16px; right: -24px; }
+    .floating-badge-icon {
+      width: 36px; height: 36px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .floating-badge-icon.green { background: #e6f9f5; }
+    .floating-badge-icon.amber { background: #fef3e2; }
+    .floating-badge-icon svg { width: 20px; height: 20px; }
+    .floating-badge-text .val { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--secondary); }
+    .floating-badge-text .desc { font-size: 12px; color: var(--gray-3); }
+
+    /* ── STATS BAR ── */
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 0; }
+    section.alt { background: var(--gray-1); }
+
+    /* ── SERVICES ── */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--gray-2);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      cursor: default;
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow-lg); transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+    .service-icon {
+      width: 52px; height: 52px; background: var(--primary-lt);
+      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-icon svg { width: 26px; height: 26px; fill: var(--primary); }
+    .service-card h3 {
+      font-family: var(--font-head); font-size: 19px; font-weight: 700;
+      color: var(--secondary); margin-bottom: 10px;
+    }
+    .service-card p { font-size: 15px; color: var(--gray-3); line-height: 1.65; }
+    .service-card .service-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 18px; font-size: 14px; font-weight: 600;
+      color: var(--primary); text-decoration: none;
+      transition: gap var(--transition);
+    }
+    .service-card:hover .service-link { gap: 10px; }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+    .step {
+      display: flex; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--gray-2);
+      position: relative;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--primary-lt); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 800; font-size: 18px; color: var(--primary);
+    }
+    .step.active .step-num { background: var(--primary); color: var(--white); }
+    .step-body h4 {
+      font-family: var(--font-head); font-size: 17px; font-weight: 700;
+      color: var(--secondary); margin-bottom: 6px;
+    }
+    .step-body p { font-size: 15px; color: var(--gray-3); line-height: 1.6; }
+    .how-visual {
+      background: linear-gradient(145deg, var(--secondary) 0%, #1a3a4a 100%);
+      border-radius: var(--radius-lg); padding: 48px 40px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .how-visual-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .how-visual-bar { background: rgba(255,255,255,.08); border-radius: var(--radius); padding: 16px 20px; }
+    .how-visual-bar-label { font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 8px; }
+    .how-visual-progress { height: 8px; background: rgba(255,255,255,.1); border-radius: 100px; }
+    .how-visual-progress-fill { height: 100%; border-radius: 100px; background: var(--primary); transition: width 1s ease; }
+    .how-visual-savings {
+      background: rgba(77,191,191,.15); border: 1px solid rgba(77,191,191,.3);
+      border-radius: var(--radius); padding: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .how-visual-savings .lbl { font-size: 13px; color: rgba(255,255,255,.6); }
+    .how-visual-savings .val { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--primary); }
+
+    /* ── WHY CHOOSE US ── */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 0; }
+    .why-features { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+    .why-feature { display: flex; gap: 16px; }
+    .why-feature-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--primary-lt); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-feature-icon svg { width: 20px; height: 20px; fill: var(--primary); }
+    .why-feature h4 { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--secondary); margin-bottom: 4px; }
+    .why-feature p { font-size: 14px; color: var(--gray-3); line-height: 1.6; }
+    .why-card {
+      background: linear-gradient(145deg, var(--secondary) 0%, #112233 100%);
+      border-radius: var(--radius-lg); padding: 40px; position: relative; overflow: hidden;
+    }
+    .why-card::before {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,191,191,.15), transparent 70%);
+    }
+    .why-card-title {
+      font-family: var(--font-head); font-size: 22px; font-weight: 800;
+      color: var(--white); margin-bottom: 28px;
+    }
+    .comparison { display: flex; flex-direction: column; gap: 14px; }
+    .comparison-row { display: flex; justify-content: space-between; align-items: center; }
+    .comparison-row .item { font-size: 14px; color: rgba(255,255,255,.7); }
+    .comparison-row .val-bad  { font-size: 14px; font-weight: 600; color: #f87171; }
+    .comparison-row .val-good { font-size: 14px; font-weight: 600; color: var(--primary); }
+    .comparison-divider { height: 1px; background: rgba(255,255,255,.08); }
+    .why-cta-banner {
+      margin-top: 32px; background: rgba(77,191,191,.12);
+      border: 1px solid rgba(77,191,191,.25); border-radius: var(--radius);
+      padding: 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .why-cta-banner p { font-size: 14px; color: rgba(255,255,255,.7); }
+    .why-cta-banner strong { color: var(--primary); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .testimonial-card {
+      background: var(--white); border: 1px solid var(--gray-2);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .stars svg { width: 16px; height: 16px; fill: #f59e0b; }
+    .testimonial-text { font-size: 15px; color: var(--neutral); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--white);
+      flex-shrink: 0;
+    }
+    .author-name { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--secondary); }
+    .author-loc  { font-size: 13px; color: var(--gray-3); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 720px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--gray-2);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .faq-item:hover { box-shadow: var(--shadow-sm); }
+    .faq-question {
+      width: 100%; padding: 20px 24px; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--secondary);
+      text-align: left;
+    }
+    .faq-icon {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--primary-lt); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .faq-icon svg { width: 14px; height: 14px; fill: var(--primary); transition: transform var(--transition); }
+    .faq-item.open .faq-icon { background: var(--primary); }
+    .faq-item.open .faq-icon svg { fill: var(--white); transform: rotate(45deg); }
+    .faq-answer {
+      display: none; padding: 0 24px 20px;
+      font-size: 15px; color: var(--gray-3); line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--secondary) 0%, #112233 100%);
+      padding: 80px 0;
+      position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(77,191,191,.12) 0%, transparent 70%);
+    }
+    .cta-band-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 40px; position: relative;
+    }
+    .cta-band h2 {
+      font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 800; color: var(--white); max-width: 520px;
+    }
+    .cta-band h2 span { color: var(--primary); }
+    .cta-band-sub { font-size: 16px; color: rgba(255,255,255,.6); margin-top: 10px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 14px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--neutral); padding: 64px 0 0;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-brand { }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+      font-family: var(--font-head); font-weight: 800; font-size: 18px; color: var(--white);
+      text-decoration: none;
+    }
+    .footer-logo-icon {
+      width: 36px; height: 36px; background: var(--primary);
+      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    }
+    .footer-logo-icon svg { width: 20px; height: 20px; fill: var(--secondary); }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px; background: rgba(255,255,255,.08);
+      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: background var(--transition);
+    }
+    .social-btn:hover { background: var(--primary); }
+    .social-btn svg { width: 16px; height: 16px; fill: rgba(255,255,255,.7); }
+    .social-btn:hover svg { fill: var(--secondary); }
+    .footer-col h5 {
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      color: var(--white); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 14px; color: rgba(255,255,255,.45); text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      margin-top: 48px; padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.3); }
+    .footer-bottom a { color: var(--primary); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-visual { display: none; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-trust { justify-content: center; }
+.services-grid { grid-template-columns: 1fr 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .how-visual { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .cta-band-inner { flex-direction: column; text-align: center; }
+      .cta-actions { align-items: center; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 64px 0; }
+      .nav-links, .nav-cta .btn { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 3l9 9v9H3V12zM12 5.83L4.83 13H5v7h14v-7h.17L12 5.83z"/></svg>
+        </div>
+        Roof Fortress
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+17753031672" class="nav-phone">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          (775) 303-1672
+        </a>
+        <a href="#contact" class="btn btn-primary">Free Inspection</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="btn btn-primary">Get Free Inspection</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge anim-fade-up">
+          <span class="hero-badge-dot"></span>
+          #1 Roof Rejuvenation in Your Area
+        </div>
+        <h1 class="anim-fade-up anim-delay-1">
+          Restore Your Roof.<br />
+          <span>Skip the Replacement.</span>
+        </h1>
+        <p class="anim-fade-up anim-delay-2">
+          Roof Fortress uses patented GreenSoy™ Technology to restore your existing roof — adding at least 6 guaranteed years per treatment, at a fraction of a $25k–$40k replacement. Up to 4 treatments. Up to 24 years of added life.
+        </p>
+        <div class="hero-actions anim-fade-up anim-delay-3">
+          <a href="#contact" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Get Free Inspection
+          </a>
+          <a href="#how-it-works" class="btn btn-outline-white">See How It Works</a>
+        </div>
+        <div class="hero-trust anim-fade-up anim-delay-4">
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            Licensed & Insured
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            6-Year Warranty
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            Same-Day Estimates
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual anim-fade-up anim-delay-2">
+        <div class="hero-card-wrap">
+          <div class="floating-badge floating-badge-tl">
+            <div class="floating-badge-icon green">
+              <svg viewBox="0 0 24 24" fill="#22c55e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            </div>
+            <div class="floating-badge-text">
+              <div class="val">Save 80%</div>
+              <div class="desc">vs full replacement</div>
+            </div>
+          </div>
+          <div class="hero-main-card">
+            <div class="hero-card-roof">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 3l9 9v9H3V12z"/></svg>
+            </div>
+            <div class="hero-card-stat">
+              <div class="hero-stat-item">
+                <div class="num">24</div>
+                <div class="lbl">Max Yrs Added</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="num">80%</div>
+                <div class="lbl">Cost Saved</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="num">1</div>
+                <div class="lbl">Day Job</div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-badge floating-badge-br">
+            <div class="floating-badge-icon amber">
+              <svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            </div>
+            <div class="floating-badge-text">
+              <div class="val">1-Day Job</div>
+              <div class="desc">No messy tear-offs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Our Services</div>
+      <h2 class="section-title">Everything Your Roof Needs</h2>
+      <p class="section-sub">From deep rejuvenation treatments to full protective coatings, we have a solution for every roof condition and budget.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4 4-1.79 4-4h2c0 1.23-.4 2.37-1.07 3.3L12 10.41l1.07.9A5.98 5.98 0 0014 14c2.21 0 4 1.79 4 4z"/></svg>
+        </div>
+        <h3>Roof Rejuvenation Treatment</h3>
+        <p>Powered by patented GreenSoy™ Technology — developed with Iowa State University — our deep-penetrating treatment restores shingle flexibility and waterproofing, adding at least 6 guaranteed years per application. Up to 4 treatments possible.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-5h2v5h6v-8h3L12 3zm0 2.83L19 12h-1v7h-4v-5H10v5H6v-7H5l7-6.17z"/></svg>
+        </div>
+        <h3>Protective Roof Coating</h3>
+        <p>A seamless elastomeric coating that reflects UV rays, prevents water infiltration, and adds a durable waterproof membrane over your existing roof structure.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Comprehensive Roof Inspection</h3>
+        <p>Detailed 25-point inspection with photographic documentation. We identify vulnerabilities, granule loss, and moisture damage before they become catastrophic failures.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+        </div>
+        <h3>Leak Detection & Repair</h3>
+        <p>Advanced moisture mapping and targeted repair services to stop leaks at the source. We fix problem areas without the cost and disruption of a full replacement.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.58.58 0 01-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.32 1.72-.93 2.27z"/></svg>
+        </div>
+        <h3>Algae & Moss Removal</h3>
+        <p>Professional bio-wash treatments that eliminate algae, moss, and lichen growth — restoring your roof's appearance and preventing the structural damage they cause over time.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l6 2.67V11c0 3.83-2.6 7.42-6 8.93-3.4-1.51-6-5.1-6-8.93V7.67L12 5zm-1 3v4h2V8h-2zm0 6v2h2v-2h-2z"/></svg>
+        </div>
+        <h3>Maintenance Plans</h3>
+        <p>Annual maintenance programs that keep your roof protected year-round. Regular treatments, inspections, and priority service to maximize your roof's longevity.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how-it-works" class="alt">
+  <div class="container">
+    <div class="how-grid">
+      <div>
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">Rejuvenation in 4 Simple Steps</h2>
+        <p class="section-sub">No tear-offs, no dumpsters, no weeks of disruption. We restore your roof in a single day.</p>
+        <div class="steps">
+          <div class="step active">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Free Roof Assessment</h4>
+              <p>We perform a comprehensive 25-point inspection and provide a detailed condition report with photos — completely free, no strings attached.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Custom Treatment Plan</h4>
+              <p>Based on your roof's age, material, and condition, we design a targeted rejuvenation plan and provide a transparent, itemized quote.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Professional Application</h4>
+              <p>Our certified technicians apply the treatment in a single day. No mess, no tear-offs — just a quiet, efficient job you'll barely notice is happening.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Warranty & Follow-Up</h4>
+              <p>You receive a 6-year warranty and a post-treatment report. We schedule a follow-up inspection 12 months later to ensure lasting performance. Up to 4 treatments can be applied over the life of your roof — up to 24 years of total added protection.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-visual">
+        <div class="how-visual-label">Roof Health Score</div>
+        <div class="how-visual-bar">
+          <div class="how-visual-bar-label">Before Treatment — Granule Retention</div>
+          <div class="how-visual-progress"><div class="how-visual-progress-fill" style="width:28%; background:#f87171;"></div></div>
+        </div>
+        <div class="how-visual-bar">
+          <div class="how-visual-bar-label">After Treatment — Granule Retention</div>
+          <div class="how-visual-progress"><div class="how-visual-progress-fill" style="width:91%;"></div></div>
+        </div>
+        <div class="how-visual-bar">
+          <div class="how-visual-bar-label">Waterproofing Restored</div>
+          <div class="how-visual-progress"><div class="how-visual-progress-fill" style="width:96%;"></div></div>
+        </div>
+        <div class="how-visual-bar">
+          <div class="how-visual-bar-label">UV Resistance</div>
+          <div class="how-visual-progress"><div class="how-visual-progress-fill" style="width:88%;"></div></div>
+        </div>
+        <div class="how-visual-savings">
+          <div>
+            <div class="lbl">Your Average Savings</div>
+            <div class="val">$8,500+</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="lbl">vs. Replacement</div>
+            <div style="font-size:13px; color:rgba(255,255,255,.4); margin-top:4px;">Typical full replacement: $25,000–$40,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY CHOOSE US ══ -->
+<section id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Roof Fortress</div>
+        <h2 class="section-title">The Smarter Alternative to Replacement</h2>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+            </div>
+            <div>
+              <h4>Up to 80% Cost Savings</h4>
+              <p>Rejuvenation costs a fraction of a $25k–$40k replacement. Keep your savings and your peace of mind — without sacrificing a single year of roof life.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            </div>
+            <div>
+              <h4>Complete in a Single Day</h4>
+              <p>No weeks of disruption, no dumpster in your driveway, no noise for days on end. Most jobs are done start-to-finish in one morning.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            </div>
+            <div>
+              <h4>Industry-Leading 6-Year Warranty</h4>
+              <p>We stand behind every treatment with a full 6-year warranty. If something goes wrong, we come back — no questions asked.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            </div>
+            <div>
+              <h4>Certified, Background-Checked Crew</h4>
+              <p>Every technician is factory certified, background-checked, and covered by our $2M liability policy. Your home is always in safe hands.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="why-card">
+          <div class="why-card-title">Rejuvenation vs. Replacement</div>
+          <div class="comparison">
+            <div class="comparison-row">
+              <span class="item">Average Cost</span>
+              <span class="val-good">$1,500–$3,500</span>
+              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="val-bad">$25,000–$40,000</span>
+            </div>
+            <div class="comparison-divider"></div>
+            <div class="comparison-row">
+              <span class="item">Completion Time</span>
+              <span class="val-good">1 Day</span>
+              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="val-bad">3–7 Days</span>
+            </div>
+            <div class="comparison-divider"></div>
+            <div class="comparison-row">
+              <span class="item">Life Extended</span>
+              <span class="val-good">10–15 Years</span>
+              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="val-bad">20–25 Years</span>
+            </div>
+            <div class="comparison-divider"></div>
+            <div class="comparison-row">
+              <span class="item">Landfill Waste</span>
+              <span class="val-good">Zero</span>
+              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="val-bad">3–5 Tons</span>
+            </div>
+            <div class="comparison-divider"></div>
+            <div class="comparison-row">
+              <span class="item">Disruption Level</span>
+              <span class="val-good">Minimal</span>
+              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="val-bad">Major</span>
+            </div>
+            <div class="comparison-divider"></div>
+            <div class="comparison-row">
+              <span class="item">Warranty</span>
+              <span class="val-good">6 Years</span>
+              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="val-bad">Varies</span>
+            </div>
+          </div>
+          <div class="why-cta-banner">
+            <p>Most roofs qualify. <strong>Get your free assessment today.</strong></p>
+            <a href="#contact" class="btn btn-primary" style="white-space:nowrap; padding:10px 20px; font-size:14px;">Check Eligibility</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials" class="alt">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">Trusted by Homeowners Like You</h2>
+      <p class="section-sub">Don't take our word for it — here's what our customers say after experiencing the Roof Fortress difference.</p>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">"I was quoted $14,000 for a full replacement. Roof Fortress came out, inspected it, and said I didn't need that — a rejuvenation would add 12+ years. Paid $2,200. Best decision I've made for this house."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div>
+            <div class="author-name">Michael R.</div>
+            <div class="author-loc">Homeowner · Austin, TX</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">"The crew showed up at 8am and were done by noon. My roof looks incredible — the moss and dark staining are completely gone. The 6-year warranty gave me total peace of mind. Highly recommend."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ST</div>
+          <div>
+            <div class="author-name">Sarah T.</div>
+            <div class="author-loc">Homeowner · Denver, CO</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-text">"As a property manager with 12 units, roof costs are my biggest headache. Roof Fortress has now treated 8 of my properties. The savings versus replacement have been staggering — I refer them to everyone I know."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DK</div>
+          <div>
+            <div class="author-name">David K.</div>
+            <div class="author-loc">Property Manager · Phoenix, AZ</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Got Questions?</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Everything you need to know about roof rejuvenation and what to expect from Roof Fortress.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is my roof a good candidate for rejuvenation?
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+        </button>
+        <div class="faq-answer">Most asphalt shingle roofs between 5 and 20 years old are excellent candidates. During our free inspection, we assess granule loss, shingle flexibility, and overall structural integrity. We'll give you an honest assessment — if your roof genuinely needs replacement, we'll tell you.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How long does the rejuvenation treatment last?
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+        </button>
+        <div class="faq-answer">Our treatments come with a 6-year warranty and are proven to add at least 6 years of life per application. With up to four treatments possible over the life of your roof, that's up to 24 years of total added protection. Many customers treat their roof multiple times before ever needing a replacement.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Will the treatment change how my roof looks?
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+        </button>
+        <div class="faq-answer">The rejuvenation treatment is designed to restore your shingles' natural appearance — deepening their color and restoring uniformity. Many customers report their roof looks years newer after treatment. The product is clear and does not create a visible coating or change the texture.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How is this different from a roof coating or sealant?
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+        </button>
+        <div class="faq-answer">Unlike surface coatings or sealants, our GreenSoy™ Technology — developed with molecular experts at Iowa State University — penetrates deep into the asphalt shingle structure. It replenishes the bio-based oils asphalt loses over time, restoring up to 50% of structural flexibility and dramatically improving wind and hail resistance. It addresses the root cause of aging, not just the surface symptoms.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does it affect my homeowner's insurance or warranty?
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+        </button>
+        <div class="faq-answer">Our treatment does not void existing manufacturer warranties in most cases, and many insurance companies view professional rejuvenation as a proactive maintenance measure. We provide documentation of our work for your records. We recommend checking your specific policy, and we're happy to provide supporting materials to your insurer if needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What happens on the day of service?
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+        </button>
+        <div class="faq-answer">Our crew arrives in the morning, does a final safety walkthrough, and applies the treatment using low-pressure application equipment. The process is quiet and non-disruptive. You don't need to be home. The treatment cures within a few hours and is rain-safe within 24 hours. We clean up completely before we leave and email you a post-service report.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<section id="contact" class="cta-band" style="padding:80px 0;">
+  <div class="container">
+    <div class="cta-band-inner">
+      <div>
+        <h2>Your Roof Could Last <span>15 More Years.</span></h2>
+        <p class="cta-band-sub">Get a free, no-obligation inspection and see exactly what's possible — before spending a dollar more than you need to.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:+17753031672" class="btn btn-primary" style="font-size:16px; padding:16px 32px;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          Call (775) 303-1672
+        </a>
+        <a href="mailto:hello@rooffortress.com" class="btn btn-outline-white">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Email Us
+        </a>
+        <p style="font-size:13px; color:rgba(255,255,255,.4); text-align:center;">Free inspection · No pressure · Same-day response</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 3l9 9v9H3V12z"/></svg>
+          </div>
+          Roof Fortress
+        </a>
+        <p class="footer-tagline">Professional roofing rejuvenation that extends the life of your roof — without the cost and disruption of full replacement.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="rgba(255,255,255,.7)" stroke-width="2"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Google">
+            <svg viewBox="0 0 24 24"><path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <div class="footer-links">
+          <a href="#services">Roof Rejuvenation</a>
+          <a href="#services">Protective Coating</a>
+          <a href="#services">Roof Inspection</a>
+          <a href="#services">Leak Repair</a>
+          <a href="#services">Algae & Moss Removal</a>
+          <a href="#services">Maintenance Plans</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <div class="footer-links">
+          <a href="#">About Us</a>
+          <a href="#">Our Team</a>
+          <a href="#">Service Areas</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <div class="footer-links">
+          <a href="tel:+17753031672">(775) 303-1672</a>
+          <a href="mailto:hello@rooffortress.com">hello@rooffortress.com</a>
+          <a href="#">Get Free Estimate</a>
+          <a href="#">Service Areas</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Roof Fortress. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="#">Terms of Service</a> &nbsp;·&nbsp;
+        Licensed &amp; Insured · ROC #XXXXXX
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Intersection Observer — animate sections in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .testimonial-card, .step, .why-feature').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
