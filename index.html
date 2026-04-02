@@ -119,11 +119,10 @@
       font-family: var(--font-head); font-weight: 800; font-size: 20px;
       color: var(--secondary); text-decoration: none;
     }
-    .nav-logo-icon {
-      width: 38px; height: 38px; background: var(--secondary);
-      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    .nav-logo-img {
+      width: 42px; height: 42px; object-fit: contain;
+      border-radius: var(--radius);
     }
-    .nav-logo-icon svg { width: 22px; height: 22px; fill: var(--primary); }
     .nav-links {
       display: flex; align-items: center; gap: 32px;
       list-style: none;
@@ -421,6 +420,106 @@
     }
     .faq-item.open .faq-answer { display: block; }
 
+    /* ── INSPECTION FORM ── */
+    .inspection-section {
+      background: linear-gradient(160deg, var(--secondary) 0%, #112233 100%);
+      padding: 96px 0; position: relative; overflow: hidden;
+    }
+    .inspection-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(77,191,191,.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .inspection-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: start;
+    }
+    .inspection-pitch { color: var(--white); }
+    .inspection-pitch h2 {
+      font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .inspection-pitch h2 span { color: var(--primary); }
+    .inspection-pitch p { font-size: 16px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 32px; }
+    .inspection-perks { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+    .inspection-perk { display: flex; align-items: flex-start; gap: 12px; }
+    .inspection-perk-icon {
+      width: 32px; height: 32px; flex-shrink: 0; border-radius: var(--radius);
+      background: rgba(77,191,191,.15); border: 1px solid rgba(77,191,191,.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .inspection-perk-icon svg { width: 16px; height: 16px; fill: var(--primary); }
+    .inspection-perk-text { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.5; }
+    .inspection-perk-text strong { color: var(--white); display: block; font-size: 15px; margin-bottom: 2px; }
+    .inspection-divider { height: 1px; background: rgba(255,255,255,.1); margin: 28px 0; }
+    .inspection-contact-alt { font-size: 14px; color: rgba(255,255,255,.45); }
+    .inspection-contact-alt a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+    /* form card */
+    .form-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 40px; box-shadow: 0 24px 64px rgba(0,0,0,.3);
+      position: relative;
+    }
+    .form-card-header { margin-bottom: 28px; }
+    .form-card-header h3 {
+      font-family: var(--font-head); font-size: 22px; font-weight: 800;
+      color: var(--secondary); margin-bottom: 6px;
+    }
+    .form-card-header p { font-size: 14px; color: var(--gray-3); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label {
+      font-size: 13px; font-weight: 600; color: var(--secondary); letter-spacing: .02em;
+    }
+    .form-group label .req { color: var(--primary); margin-left: 2px; }
+    .form-control {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--gray-2); border-radius: var(--radius);
+      font-family: var(--font-body); font-size: 15px; color: var(--neutral);
+      background: var(--white); outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(77,191,191,.15);
+    }
+    .form-control::placeholder { color: var(--gray-3); }
+    select.form-control { cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%239aa5b4'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 36px;
+    }
+    .form-section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--primary); margin: 20px 0 14px; padding-top: 20px;
+      border-top: 1px solid var(--gray-2);
+    }
+    .form-section-label:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .form-submit { margin-top: 24px; }
+    .form-submit .btn { width: 100%; justify-content: center; padding: 15px; font-size: 16px; }
+    .form-fine { margin-top: 12px; font-size: 12px; color: var(--gray-3); text-align: center; line-height: 1.5; }
+
+    /* success state */
+    .form-success {
+      display: none; text-align: center; padding: 20px 0;
+    }
+    .form-success-icon {
+      width: 64px; height: 64px; background: #e6f9f5; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .form-success-icon svg { width: 32px; height: 32px; fill: #22c55e; }
+    .form-success h4 { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--secondary); margin-bottom: 10px; }
+    .form-success p { font-size: 15px; color: var(--gray-3); line-height: 1.6; }
+
+    @media (max-width: 1024px) {
+      .inspection-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 640px) {
+      .form-card { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     /* ── CTA BAND ── */
     .cta-band {
       background: linear-gradient(135deg, var(--secondary) 0%, #112233 100%);
@@ -522,9 +621,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 3l9 9v9H3V12zM12 5.83L4.83 13H5v7h14v-7h.17L12 5.83z"/></svg>
-        </div>
+        <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" />
         Roof Fortress
       </a>
       <ul class="nav-links">
@@ -1013,24 +1110,138 @@
 </section>
 
 <!-- ══ CTA BAND ══ -->
-<section id="contact" class="cta-band" style="padding:80px 0;">
+<section id="contact" class="inspection-section">
   <div class="container">
-    <div class="cta-band-inner">
-      <div>
-        <h2>Your Roof Could Last <span>15 More Years.</span></h2>
-        <p class="cta-band-sub">Get a free, no-obligation inspection and see exactly what's possible — before spending a dollar more than you need to.</p>
+    <div class="inspection-grid">
+
+      <!-- Left: pitch -->
+      <div class="inspection-pitch">
+        <div class="tag" style="background:rgba(77,191,191,.15);color:var(--primary);border:1px solid rgba(77,191,191,.25);">Free — No Obligation</div>
+        <h2>Schedule Your <span>Free Roof Inspection</span></h2>
+        <p>Find out in minutes whether your roof qualifies for rejuvenation — and how much you could save versus a full replacement.</p>
+        <div class="inspection-perks">
+          <div class="inspection-perk">
+            <div class="inspection-perk-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+            <div class="inspection-perk-text"><strong>Same-Day Response</strong>We'll confirm your appointment within a few hours of submitting.</div>
+          </div>
+          <div class="inspection-perk">
+            <div class="inspection-perk-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+            <div class="inspection-perk-text"><strong>25-Point Inspection — Free</strong>Full photo report of your roof's condition, no strings attached.</div>
+          </div>
+          <div class="inspection-perk">
+            <div class="inspection-perk-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+            <div class="inspection-perk-text"><strong>Instant Quote On-Site</strong>We'll give you a clear, itemized quote before we leave your driveway.</div>
+          </div>
+          <div class="inspection-perk">
+            <div class="inspection-perk-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div class="inspection-perk-text"><strong>6-Year Warranty Backed</strong>Every job is covered — if anything goes wrong, we come back.</div>
+          </div>
+        </div>
+        <div class="inspection-divider"></div>
+        <p class="inspection-contact-alt">Prefer to call? <a href="tel:+17753031672">(775) 303-1672</a> · Mon–Sat 7am–6pm</p>
       </div>
-      <div class="cta-actions">
-        <a href="tel:+17753031672" class="btn btn-primary" style="font-size:16px; padding:16px 32px;">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          Call (775) 303-1672
-        </a>
-        <a href="mailto:hello@rooffortress.com" class="btn btn-outline-white">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Email Us
-        </a>
-        <p style="font-size:13px; color:rgba(255,255,255,.4); text-align:center;">Free inspection · No pressure · Same-day response</p>
+
+      <!-- Right: form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <h3>Book Your Free Inspection</h3>
+          <p>Takes less than 2 minutes. We'll handle the rest.</p>
+        </div>
+
+        <form id="inspectionForm" novalidate>
+
+          <div class="form-section-label">Your Information</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" class="form-control" name="firstName" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" class="form-control" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone <span class="req">*</span></label>
+              <input type="tel" class="form-control" name="phone" placeholder="(775) 000-0000" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email" placeholder="jane@email.com" />
+            </div>
+          </div>
+
+          <div class="form-section-label">Property Details</div>
+          <div class="form-group">
+            <label>Property Address <span class="req">*</span></label>
+            <input type="text" class="form-control" name="address" placeholder="123 Main St, Reno, NV 89501" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Roof Type</label>
+              <select class="form-control" name="roofType">
+                <option value="">Select type...</option>
+                <option>Asphalt Shingles</option>
+                <option>3-Tab Shingles</option>
+                <option>Architectural Shingles</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Approximate Roof Age</label>
+              <select class="form-control" name="roofAge">
+                <option value="">Select age...</option>
+                <option>Under 5 years</option>
+                <option>5–10 years</option>
+                <option>10–15 years</option>
+                <option>15–20 years</option>
+                <option>20+ years</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section-label">Scheduling</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Preferred Date <span class="req">*</span></label>
+              <input type="date" class="form-control" name="preferredDate" required />
+            </div>
+            <div class="form-group">
+              <label>Preferred Time</label>
+              <select class="form-control" name="preferredTime">
+                <option value="">Any time</option>
+                <option>Morning (7am–12pm)</option>
+                <option>Afternoon (12pm–4pm)</option>
+                <option>Late Afternoon (4pm–6pm)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Anything we should know?</label>
+            <textarea class="form-control" name="notes" rows="3" placeholder="Visible damage, leak location, gate codes, etc." style="resize:vertical;"></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              Schedule My Free Inspection
+            </button>
+          </div>
+          <p class="form-fine">No spam. No sales pressure. We respect your time.</p>
+        </form>
+
+        <!-- Success state shown after submit -->
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+          </div>
+          <h4>You're on the schedule!</h4>
+          <p>We'll call you at the number you provided to confirm your appointment. See you soon.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1041,9 +1252,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#" class="footer-logo">
-          <div class="footer-logo-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 3l9 9v9H3V12z"/></svg>
-          </div>
+          <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" />
           Roof Fortress
         </a>
         <p class="footer-tagline">Professional roofing rejuvenation that extends the life of your roof — without the cost and disruption of full replacement.</p>
@@ -1126,6 +1335,82 @@
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
+  });
+
+  // Set minimum date on date picker to today
+  const dateInput = document.querySelector('input[name="preferredDate"]');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+
+  // Inspection form submission
+  const inspectionForm = document.getElementById('inspectionForm');
+  const formSuccess   = document.getElementById('formSuccess');
+
+  if (inspectionForm) {
+    inspectionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic required-field validation
+      const required = inspectionForm.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value.trim()) {
+          field.style.borderColor = '#f87171';
+          valid = false;
+        }
+      });
+      if (!valid) return;
+
+      const submitBtn = inspectionForm.querySelector('[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      // Collect form data
+      const data = Object.fromEntries(new FormData(inspectionForm));
+
+      // ─────────────────────────────────────────────────────────────
+      // TODO: Quote IQ Integration
+      //
+      // Replace this block with the Quote IQ API call once credentials
+      // are available. Example shape:
+      //
+      // await fetch('https://api.quoteiq.com/v1/leads', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': 'Bearer YOUR_QUOTE_IQ_API_KEY'
+      //   },
+      //   body: JSON.stringify({
+      //     first_name:    data.firstName,
+      //     last_name:     data.lastName,
+      //     phone:         data.phone,
+      //     email:         data.email,
+      //     address:       data.address,
+      //     roof_type:     data.roofType,
+      //     roof_age:      data.roofAge,
+      //     preferred_date: data.preferredDate,
+      //     preferred_time: data.preferredTime,
+      //     notes:         data.notes,
+      //     source:        'website_inspection_form'
+      //   })
+      // });
+      //
+      // ─────────────────────────────────────────────────────────────
+
+      // Placeholder: simulate a short network delay, then show success
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      inspectionForm.style.display = 'none';
+      formSuccess.style.display = 'block';
+    });
+  }
+
+  // Inspection form — clear red borders on input
+  document.querySelectorAll('#inspectionForm [required]').forEach(field => {
+    field.addEventListener('input', () => { field.style.borderColor = ''; });
   });
 
   // Intersection Observer — animate sections in
