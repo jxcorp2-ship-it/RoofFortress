@@ -587,6 +587,210 @@
     .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.3); }
     .footer-bottom a { color: var(--primary); text-decoration: none; }
 
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--secondary);
+      border-top: 1px solid rgba(77,191,191,.15);
+      border-bottom: 1px solid rgba(77,191,191,.1);
+      padding: 0;
+    }
+    .trust-strip-grid {
+      display: flex; justify-content: center; flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 36px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      flex: 1; min-width: 220px;
+    }
+    .trust-badge:last-child { border-right: none; }
+    .trust-badge-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(77,191,191,.12); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trust-badge-icon svg { width: 20px; height: 20px; fill: var(--primary); }
+    .trust-badge-text strong { display: block; font-family: var(--font-head); font-weight: 700; font-size: 14px; color: var(--white); }
+    .trust-badge-text span  { font-size: 12px; color: rgba(255,255,255,.45); }
+
+    /* ── QUIZ ── */
+    .quiz-section { background: #0e1c2a; padding: 88px 0; }
+    .quiz-section-header { text-align: center; margin-bottom: 44px; }
+    .quiz-section-header .section-title { color: var(--white); }
+    .quiz-section-header .section-sub   { color: rgba(255,255,255,.5); margin: 12px auto 0; }
+
+    .quiz-card {
+      max-width: 680px; margin: 0 auto;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(77,191,191,.22);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      box-shadow: 0 12px 48px rgba(0,0,0,.45);
+    }
+
+    /* progress bar */
+    .quiz-progress { margin-bottom: 36px; }
+    .quiz-progress-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+    }
+    .quiz-progress-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .quiz-progress-step  { font-size: 13px; font-weight: 700; color: var(--primary); }
+    .quiz-progress-track { height: 4px; background: rgba(255,255,255,.1); border-radius: 100px; overflow: hidden; }
+    .quiz-progress-fill  { height: 100%; background: var(--primary); border-radius: 100px; transition: width .45s cubic-bezier(.4,0,.2,1); }
+
+    /* steps */
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; animation: fadeUp .32s ease both; }
+
+    .quiz-step-title { font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .quiz-step-sub   { font-size: 15px; color: rgba(255,255,255,.5); margin-bottom: 28px; line-height: 1.6; }
+
+    /* age / shingle type option grid */
+    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .quiz-option {
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: var(--radius); padding: 16px 18px;
+      cursor: pointer; background: rgba(255,255,255,.03);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      position: relative; user-select: none;
+    }
+    .quiz-option:hover { border-color: rgba(77,191,191,.5); background: rgba(77,191,191,.07); transform: translateY(-1px); }
+    .quiz-option.selected { border-color: var(--primary); background: rgba(77,191,191,.13); }
+    .quiz-option.best-candidate { border-color: rgba(77,191,191,.35); }
+    .quiz-option.best-candidate::after {
+      content: 'Best Candidate';
+      position: absolute; top: -11px; right: 10px;
+      background: var(--primary); color: var(--secondary);
+      font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      padding: 2px 9px; border-radius: 100px;
+    }
+    .quiz-option.best-candidate.selected::after { background: var(--primary-dk); }
+    .quiz-option-label { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--white); }
+    .quiz-option-sub   { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+
+    /* soft-disqualify inline message */
+    .quiz-softdq-msg {
+      display: none; margin-top: 14px;
+      background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.2);
+      border-radius: var(--radius); padding: 13px 16px;
+    }
+    .quiz-softdq-msg p { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.5; }
+    .quiz-softdq-msg strong { color: #fde68a; }
+
+    /* step 2 — boolean rows */
+    .quiz-bool-group { margin-bottom: 24px; }
+    .quiz-bool-group:last-child { margin-bottom: 0; }
+    .quiz-bool-question { font-size: 15px; font-weight: 600; color: rgba(255,255,255,.85); margin-bottom: 10px; }
+    .quiz-bool-row { display: flex; gap: 10px; }
+    .quiz-bool-btn {
+      flex: 1; padding: 11px 8px; border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: var(--radius); background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.65); font-family: var(--font-body); font-weight: 600; font-size: 14px;
+      cursor: pointer; transition: all var(--transition); text-align: center;
+    }
+    .quiz-bool-btn:hover { border-color: rgba(77,191,191,.45); color: var(--white); }
+    .quiz-bool-btn.selected { border-color: var(--primary); background: rgba(77,191,191,.12); color: var(--white); }
+    .quiz-bool-btn.warn.selected { border-color: #f87171; background: rgba(248,113,113,.1); color: #fca5a5; }
+
+    /* step 3 — contact form */
+    .quiz-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .quiz-form-group { margin-bottom: 14px; }
+    .quiz-form-group label { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.65); margin-bottom: 6px; }
+    .quiz-form-group label .req { color: var(--primary); margin-left: 2px; }
+    .quiz-input {
+      width: 100%; padding: 11px 14px;
+      background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: var(--radius); color: var(--white);
+      font-family: var(--font-body); font-size: 15px; outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .quiz-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(77,191,191,.15); }
+    .quiz-input::placeholder { color: rgba(255,255,255,.28); }
+    .quiz-pref-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.65); margin-bottom: 10px; }
+    .quiz-pref-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .quiz-pref-chip {
+      padding: 8px 18px; border: 1.5px solid rgba(255,255,255,.14);
+      border-radius: 100px; background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.55); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all var(--transition); user-select: none;
+    }
+    .quiz-pref-chip.selected { border-color: var(--primary); background: rgba(77,191,191,.14); color: var(--white); }
+
+    /* quiz nav */
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; gap: 12px; }
+    .quiz-btn-back {
+      background: none; border: 1.5px solid rgba(255,255,255,.18); color: rgba(255,255,255,.55);
+      padding: 12px 22px; border-radius: var(--radius); font-family: var(--font-body); font-weight: 600; font-size: 14px;
+      cursor: pointer; transition: all var(--transition);
+    }
+    .quiz-btn-back:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
+    .quiz-btn-next {
+      margin-left: auto;
+      background: var(--primary); color: var(--secondary); border: none;
+      padding: 13px 30px; border-radius: var(--radius);
+      font-family: var(--font-body); font-weight: 700; font-size: 15px;
+      cursor: pointer; transition: all var(--transition);
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 16px rgba(77,191,191,.3);
+    }
+    .quiz-btn-next:hover { background: var(--primary-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(77,191,191,.4); }
+    .quiz-btn-next:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* success screen */
+    .quiz-success {
+      display: none; text-align: center; padding: 16px 0;
+      animation: fadeUp .4s ease both;
+    }
+    .quiz-success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+    }
+    .quiz-success-icon.ok   { background: rgba(77,191,191,.15); border: 2px solid rgba(77,191,191,.3); }
+    .quiz-success-icon.soft { background: rgba(251,191,36,.1);  border: 2px solid rgba(251,191,36,.25); }
+    .quiz-success-icon svg  { width: 36px; height: 36px; }
+    .quiz-success h3 { font-family: var(--font-head); font-size: 24px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+    .quiz-success p  { font-size: 16px; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .quiz-success-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--primary); color: var(--secondary);
+      padding: 15px 30px; border-radius: var(--radius);
+      font-family: var(--font-head); font-weight: 800; font-size: 18px;
+      text-decoration: none; box-shadow: 0 4px 20px rgba(77,191,191,.35);
+      transition: all var(--transition);
+    }
+    .quiz-success-cta:hover { background: var(--primary-dk); transform: translateY(-2px); }
+    .quiz-success-cta svg { width: 20px; height: 20px; fill: var(--secondary); }
+    .quiz-success-alt { display: block; margin-top: 14px; font-size: 14px; color: rgba(255,255,255,.4); text-decoration: none; }
+    .quiz-success-alt:hover { color: var(--primary); }
+
+    /* ── STICKY MOBILE BAR ── */
+    .sticky-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--secondary); border-top: 1px solid rgba(77,191,191,.2);
+      padding: 10px 16px 12px; box-shadow: 0 -4px 24px rgba(0,0,0,.35);
+    }
+    .sticky-bar-inner { display: flex; gap: 10px; }
+    .sticky-bar-call {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--primary); color: var(--secondary);
+      padding: 13px 10px; border-radius: var(--radius);
+      font-family: var(--font-body); font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: background var(--transition);
+    }
+    .sticky-bar-call:hover { background: var(--primary-dk); }
+    .sticky-bar-call svg { width: 18px; height: 18px; fill: var(--secondary); }
+    .sticky-bar-appt {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.18); color: var(--white);
+      padding: 13px 10px; border-radius: var(--radius);
+      font-family: var(--font-body); font-weight: 600; font-size: 15px;
+      text-decoration: none; transition: all var(--transition);
+    }
+    .sticky-bar-appt:hover { background: rgba(255,255,255,.12); }
+    .sticky-bar-appt svg { width: 18px; height: 18px; fill: var(--white); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
@@ -603,6 +807,9 @@
       .cta-band-inner { flex-direction: column; text-align: center; }
       .cta-actions { align-items: center; }
     }
+    @media (max-width: 1024px) {
+      .trust-badge { min-width: 200px; flex: 1 1 200px; }
+    }
     @media (max-width: 640px) {
       section { padding: 64px 0; }
       .nav-links, .nav-cta .btn { display: none; }
@@ -611,6 +818,17 @@
       .testimonials-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      /* trust strip */
+      .trust-badge { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 14px 20px; }
+      .trust-badge:last-child { border-bottom: none; }
+      /* quiz */
+      .quiz-card { padding: 28px 18px; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .quiz-form-row { grid-template-columns: 1fr; }
+      .quiz-bool-row { flex-wrap: wrap; }
+      .quiz-bool-btn { flex: 1 1 calc(50% - 5px); }
+      /* sticky bar */
+      .sticky-bar { display: block; }
     }
   </style>
 </head>
@@ -670,11 +888,11 @@
           Roof Fortress uses patented GreenSoy™ Technology to restore your existing roof — adding at least 6 guaranteed years per treatment, at a fraction of a $25k–$40k replacement. Up to 4 treatments. Up to 24 years of added life.
         </p>
         <div class="hero-actions anim-fade-up anim-delay-3">
-          <a href="#contact" class="btn btn-primary">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-            Get Free Inspection
+          <a href="tel:+17753031672" class="btn btn-primary" style="font-size:16px; padding:15px 32px;">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            Call Now
           </a>
-          <a href="#how-it-works" class="btn btn-outline-white">See How It Works</a>
+          <a href="/appointment" class="btn btn-outline-white">Book an Appointment</a>
         </div>
         <div class="hero-trust anim-fade-up anim-delay-4">
           <div class="hero-trust-item">
@@ -736,6 +954,199 @@
   </div>
 </section>
 
+
+<!-- ══ TRUST STRIP ══ -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-strip-grid">
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        </div>
+        <div class="trust-badge-text">
+          <strong>6-Year Warranty</strong>
+          <span>Every job fully guaranteed</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <div class="trust-badge-text">
+          <strong>80% Cheaper Than Replacement</strong>
+          <span>vs. $25k–$40k full replacement</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"/></svg>
+        </div>
+        <div class="trust-badge-text">
+          <strong>Soy-Based Formula</strong>
+          <span>Safe for pets &amp; family</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<section id="quiz" class="quiz-section">
+  <div class="container">
+    <div class="quiz-section-header">
+      <div class="section-label">2-Minute Eligibility Check</div>
+      <h2 class="section-title">Does Your Roof Qualify?</h2>
+      <p class="section-sub">Answer 3 quick questions and we'll tell you exactly where you stand — no fluff, no sales pitch.</p>
+    </div>
+
+    <div class="quiz-card">
+      <!-- Progress bar -->
+      <div class="quiz-progress">
+        <div class="quiz-progress-header">
+          <span class="quiz-progress-label">Your Roof Profile</span>
+          <span class="quiz-progress-step" id="quizStepLabel">Step 1 of 3</span>
+        </div>
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width:33%"></div>
+        </div>
+      </div>
+
+      <!-- ── STEP 1: Roof Age ── -->
+      <div class="quiz-step active" id="quizStep1">
+        <div class="quiz-step-title">How old is your roof?</div>
+        <div class="quiz-step-sub">This helps us know if rejuvenation is the right fit — or if you might need something else first.</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-value="0-5" data-result="soft">
+            <div class="quiz-option-label">0–5 Years</div>
+            <div class="quiz-option-sub">Relatively new</div>
+          </div>
+          <div class="quiz-option" data-value="5-10" data-result="qualify">
+            <div class="quiz-option-label">5–10 Years</div>
+            <div class="quiz-option-sub">Good candidate</div>
+          </div>
+          <div class="quiz-option best-candidate" data-value="10-18" data-result="qualify">
+            <div class="quiz-option-label">10–18 Years</div>
+            <div class="quiz-option-sub">Ideal range</div>
+          </div>
+          <div class="quiz-option" data-value="18+" data-result="soft">
+            <div class="quiz-option-label">18+ Years</div>
+            <div class="quiz-option-sub">May need inspection first</div>
+          </div>
+        </div>
+        <div class="quiz-softdq-msg" id="step1SoftMsg">
+          <p id="step1SoftText"></p>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-next" id="step1Next" disabled>
+            Next <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Roof Condition ── -->
+      <div class="quiz-step" id="quizStep2">
+        <div class="quiz-step-title">Tell us about your roof's condition.</div>
+        <div class="quiz-step-sub">Three quick questions — pick the best answer for each.</div>
+
+        <!-- Shingle type -->
+        <div class="quiz-bool-group">
+          <div class="quiz-bool-question">What type of shingles do you have?</div>
+          <div class="quiz-bool-row" id="shingleRow">
+            <button class="quiz-bool-btn" data-group="shingle" data-value="asphalt">Asphalt</button>
+            <button class="quiz-bool-btn" data-group="shingle" data-value="tile">Tile</button>
+            <button class="quiz-bool-btn" data-group="shingle" data-value="metal">Metal</button>
+            <button class="quiz-bool-btn" data-group="shingle" data-value="other">Other</button>
+          </div>
+        </div>
+
+        <!-- Active leaks -->
+        <div class="quiz-bool-group">
+          <div class="quiz-bool-question">Do you have any active leaks?</div>
+          <div class="quiz-bool-row" id="leakRow">
+            <button class="quiz-bool-btn warn" data-group="leak" data-value="yes">Yes</button>
+            <button class="quiz-bool-btn" data-group="leak" data-value="no">No</button>
+          </div>
+        </div>
+
+        <!-- Granule loss -->
+        <div class="quiz-bool-group">
+          <div class="quiz-bool-question">Have you noticed granules in your gutters or downspouts?</div>
+          <div class="quiz-bool-row" id="granuleRow">
+            <button class="quiz-bool-btn" data-group="granule" data-value="yes">Yes</button>
+            <button class="quiz-bool-btn" data-group="granule" data-value="no">No</button>
+            <button class="quiz-bool-btn" data-group="granule" data-value="unsure">Not Sure</button>
+          </div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" id="step2Back">← Back</button>
+          <button class="quiz-btn-next" id="step2Next" disabled>
+            Next <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Contact Capture ── -->
+      <div class="quiz-step" id="quizStep3">
+        <div class="quiz-step-title">Almost there — where do we send your results?</div>
+        <div class="quiz-step-sub">We'll review your roof profile and reach out within 24 hours.</div>
+
+        <div class="quiz-form-row">
+          <div class="quiz-form-group">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" class="quiz-input" id="qFirstName" placeholder="Jane" />
+          </div>
+          <div class="quiz-form-group">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" class="quiz-input" id="qLastName" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="quiz-form-row">
+          <div class="quiz-form-group">
+            <label>Phone <span class="req">*</span></label>
+            <input type="tel" class="quiz-input" id="qPhone" placeholder="(775) 000-0000" />
+          </div>
+          <div class="quiz-form-group">
+            <label>Email</label>
+            <input type="email" class="quiz-input" id="qEmail" placeholder="jane@email.com" />
+          </div>
+        </div>
+        <div class="quiz-form-group">
+          <label>Zip Code <span class="req">*</span></label>
+          <input type="text" class="quiz-input" id="qZip" placeholder="89501" maxlength="10" style="max-width:180px;" />
+        </div>
+
+        <div class="quiz-pref-label">I prefer to be contacted by:</div>
+        <div class="quiz-pref-chips" id="prefChips">
+          <div class="quiz-pref-chip" data-pref="phone">📞 Phone Call</div>
+          <div class="quiz-pref-chip" data-pref="email">✉️ Email</div>
+          <div class="quiz-pref-chip selected" data-pref="either">Either works</div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" id="step3Back">← Back</button>
+          <button class="quiz-btn-next" id="step3Submit">
+            Send My Results →
+          </button>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS ── -->
+      <div class="quiz-success" id="quizSuccess">
+        <div class="quiz-success-icon" id="quizSuccessIcon">
+          <svg viewBox="0 0 24 24" id="quizSuccessIconSvg"></svg>
+        </div>
+        <h3 id="quizSuccessTitle"></h3>
+        <p id="quizSuccessBody"></p>
+        <a href="tel:+17753031672" class="quiz-success-cta">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          (775) 303-1672
+        </a>
+        <a href="/appointment" class="quiz-success-alt" id="quizSuccessAlt"></a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ SERVICES ══ -->
 <section id="services">
@@ -1429,7 +1840,198 @@
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+  // ── QUIZ CONTROLLER ──────────────────────────────────────────────
+  (function () {
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    // State
+    const state = {
+      ageResult: null,   // 'qualify' | 'soft'
+      ageValue:  null,
+      shingle:   null,
+      leak:      null,
+      granule:   null,
+      contactPref: 'either'
+    };
+
+    const progressFill  = document.getElementById('quizProgressFill');
+    const stepLabel     = document.getElementById('quizStepLabel');
+
+    function setProgress(step) {
+      const pct = Math.round((step / totalSteps) * 100);
+      progressFill.style.width = pct + '%';
+      stepLabel.textContent = `Step ${step} of ${totalSteps}`;
+    }
+
+    function showStep(n) {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      const el = document.getElementById('quizStep' + n);
+      if (el) el.classList.add('active');
+      currentStep = n;
+      setProgress(n);
+    }
+
+    // ── STEP 1: age options ──
+    document.querySelectorAll('#quizStep1 .quiz-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('#quizStep1 .quiz-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        state.ageValue  = opt.dataset.value;
+        state.ageResult = opt.dataset.result;
+
+        const msg  = document.getElementById('step1SoftMsg');
+        const text = document.getElementById('step1SoftText');
+        if (state.ageResult === 'soft') {
+          msg.style.display = 'block';
+          text.innerHTML = state.ageValue === '0-5'
+            ? '<strong>Your roof may be too new</strong> — but call us and we\'ll confirm. Rejuvenation can still help in some cases.'
+            : '<strong>Your roof may need a full inspection first</strong> — give us a call and we\'ll walk you through the best path forward.';
+        } else {
+          msg.style.display = 'none';
+        }
+        document.getElementById('step1Next').disabled = false;
+      });
+    });
+
+    document.getElementById('step1Next').addEventListener('click', () => showStep(2));
+
+    // ── STEP 2: bool buttons ──
+    function wireBoolGroup(groupName) {
+      document.querySelectorAll(`[data-group="${groupName}"]`).forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(`[data-group="${groupName}"]`).forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          state[groupName] = btn.dataset.value;
+          checkStep2();
+        });
+      });
+    }
+    wireBoolGroup('shingle');
+    wireBoolGroup('leak');
+    wireBoolGroup('granule');
+
+    function checkStep2() {
+      const ready = state.shingle && state.leak && state.granule;
+      document.getElementById('step2Next').disabled = !ready;
+    }
+
+    document.getElementById('step2Back').addEventListener('click', () => showStep(1));
+    document.getElementById('step2Next').addEventListener('click', () => showStep(3));
+
+    // ── STEP 3: contact pref chips ──
+    document.querySelectorAll('.quiz-pref-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.quiz-pref-chip').forEach(c => c.classList.remove('selected'));
+        chip.classList.add('selected');
+        state.contactPref = chip.dataset.pref;
+      });
+    });
+
+    document.getElementById('step3Back').addEventListener('click', () => showStep(2));
+
+    // ── STEP 3: submit ──
+    document.getElementById('step3Submit').addEventListener('click', () => {
+      const firstName = document.getElementById('qFirstName').value.trim();
+      const lastName  = document.getElementById('qLastName').value.trim();
+      const phone     = document.getElementById('qPhone').value.trim();
+      const zip       = document.getElementById('qZip').value.trim();
+
+      // Highlight missing required fields
+      [['qFirstName', firstName], ['qLastName', lastName], ['qPhone', phone], ['qZip', zip]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        el.style.borderColor = val ? '' : '#f87171';
+      });
+      if (!firstName || !lastName || !phone || !zip) return;
+
+      // Lead routing logic
+      const qualified = (
+        state.ageResult === 'qualify' &&
+        state.shingle === 'asphalt' &&
+        state.leak !== 'yes'
+      );
+
+      // TODO: Quote IQ Integration — send quiz lead
+      // await fetch('https://api.quoteiq.com/v1/leads', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer YOUR_KEY' },
+      //   body: JSON.stringify({
+      //     first_name: firstName, last_name: lastName, phone, zip,
+      //     email: document.getElementById('qEmail').value.trim(),
+      //     contact_pref: state.contactPref,
+      //     roof_age: state.ageValue, shingle_type: state.shingle,
+      //     active_leak: state.leak, granule_loss: state.granule,
+      //     qualified, source: 'website_quiz'
+      //   })
+      // });
+
+      // Hide all steps and progress
+      document.querySelector('.quiz-progress').style.display = 'none';
+      document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+
+      const successEl   = document.getElementById('quizSuccess');
+      const iconEl      = document.getElementById('quizSuccessIcon');
+      const iconSvg     = document.getElementById('quizSuccessIconSvg');
+      const titleEl     = document.getElementById('quizSuccessTitle');
+      const bodyEl      = document.getElementById('quizSuccessBody');
+      const altEl       = document.getElementById('quizSuccessAlt');
+
+      if (qualified) {
+        iconEl.className = 'quiz-success-icon ok';
+        iconSvg.setAttribute('fill', '#4DBFBF');
+        iconSvg.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>';
+        titleEl.textContent = `Great news, ${firstName}!`;
+        bodyEl.textContent  = 'Your roof looks like a strong candidate for rejuvenation. We\'ll review your profile and call you within 24 hours with next steps. In a hurry?';
+        altEl.textContent   = 'Or book a time that works for you →';
+        altEl.href          = '/appointment';
+      } else {
+        iconEl.className = 'quiz-success-icon soft';
+        iconSvg.setAttribute('fill', '#fbbf24');
+        iconSvg.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>';
+        titleEl.textContent = `Thanks, ${firstName} — we'd love to take a look.`;
+        bodyEl.textContent  = "Based on your answers, we'd want to do a free in-person inspection before recommending a treatment. Book one below — it's completely free.";
+        altEl.textContent   = 'Book your free inspection →';
+        altEl.href          = '#contact';
+      }
+
+      successEl.style.display = 'block';
+    });
+
+    // Clear red on input
+    ['qFirstName','qLastName','qPhone','qZip'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', e => { e.target.style.borderColor = ''; });
+    });
+  })();
+  // ─────────────────────────────────────────────────────────────────
+
+  // Add mobile bottom padding so sticky bar doesn't cover content
+  function updateStickyPadding() {
+    const bar = document.querySelector('.sticky-bar');
+    if (bar && window.getComputedStyle(bar).display !== 'none') {
+      document.body.style.paddingBottom = bar.offsetHeight + 'px';
+    } else {
+      document.body.style.paddingBottom = '';
+    }
+  }
+  window.addEventListener('resize', updateStickyPadding);
+  updateStickyPadding();
+
 </script>
+
+<!-- ══ STICKY MOBILE BAR ══ -->
+<div class="sticky-bar">
+  <div class="sticky-bar-inner">
+    <a href="tel:+17753031672" class="sticky-bar-call">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      Call Now
+    </a>
+    <a href="/appointment" class="sticky-bar-appt">
+      <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      Book Appt
+    </a>
+  </div>
+</div>
 
 </body>
 </html>
