@@ -764,6 +764,37 @@
     .quiz-success-cta svg { width: 20px; height: 20px; fill: var(--secondary); }
     .quiz-success-alt { display: block; margin-top: 14px; font-size: 14px; color: rgba(255,255,255,.4); text-decoration: none; }
     .quiz-success-alt:hover { color: var(--primary); }
+    .quiz-success-savings { background: rgba(77,191,191,.08); border: 1px solid rgba(77,191,191,.2); border-radius: var(--radius); padding: 16px 20px; margin: 0 auto 24px; max-width: 420px; font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.6; }
+    .quiz-success-savings strong { color: var(--primary); }
+
+    /* large roof-type cards (step 2) */
+    .quiz-type-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 4px; }
+    .quiz-type-card {
+      border: 2px solid rgba(255,255,255,.1); border-radius: var(--radius-lg);
+      padding: 30px 20px; text-align: center; cursor: pointer;
+      background: rgba(255,255,255,.03); transition: all var(--transition); user-select: none;
+    }
+    .quiz-type-card:hover { border-color: rgba(77,191,191,.5); background: rgba(77,191,191,.07); transform: translateY(-2px); }
+    .quiz-type-card.selected { border-color: var(--primary); background: rgba(77,191,191,.13); }
+    .quiz-type-card-icon { font-size: 40px; margin-bottom: 12px; line-height: 1; display: block; }
+    .quiz-type-card-label { font-family: var(--font-head); font-weight: 800; font-size: 17px; color: var(--white); margin-bottom: 6px; }
+    .quiz-type-card-sub { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+    /* multi-select checkbox overlay (step 4) */
+    .quiz-option-check {
+      position: absolute; top: 12px; right: 12px;
+      width: 18px; height: 18px; border: 1.5px solid rgba(255,255,255,.2);
+      border-radius: 4px; transition: all var(--transition); flex-shrink: 0;
+    }
+    .quiz-option.selected .quiz-option-check { background: var(--primary); border-color: var(--primary); }
+    .quiz-option.selected .quiz-option-check::after {
+      content: '✓'; position: absolute; top: -2px; left: 2px;
+      font-size: 12px; color: var(--secondary); font-weight: 900;
+    }
+
+    @media (max-width: 480px) {
+      .quiz-type-cards { grid-template-columns: 1fr; }
+    }
 
     /* ── STICKY MOBILE BAR ── */
     .sticky-bar {
@@ -994,102 +1025,144 @@
 <section id="quiz" class="quiz-section">
   <div class="container">
     <div class="quiz-section-header">
-      <div class="section-label">2-Minute Eligibility Check</div>
-      <h2 class="section-title">Does Your Roof Qualify?</h2>
-      <p class="section-sub">Answer 3 quick questions and we'll tell you exactly where you stand — no fluff, no sales pitch.</p>
+      <div class="section-label">Free Savings Report</div>
+      <h2 class="section-title">Does Your Roof Qualify for Rejuvenation?</h2>
+      <p class="section-sub">Answer 5 quick questions &bull; Results &amp; report delivered instantly &bull; Our expert will call you today</p>
     </div>
 
     <div class="quiz-card">
       <!-- Progress bar -->
-      <div class="quiz-progress">
+      <div class="quiz-progress" id="quizProgressBar">
         <div class="quiz-progress-header">
           <span class="quiz-progress-label">Your Roof Profile</span>
-          <span class="quiz-progress-step" id="quizStepLabel">Step 1 of 3</span>
+          <span class="quiz-progress-step" id="quizStepLabel">Step 1 of 5</span>
         </div>
         <div class="quiz-progress-track">
-          <div class="quiz-progress-fill" id="quizProgressFill" style="width:33%"></div>
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width:20%"></div>
         </div>
       </div>
 
       <!-- ── STEP 1: Roof Age ── -->
       <div class="quiz-step active" id="quizStep1">
-        <div class="quiz-step-title">How old is your roof?</div>
-        <div class="quiz-step-sub">This helps us know if rejuvenation is the right fit — or if you might need something else first.</div>
+        <div class="quiz-step-title">How old is your current roof?</div>
+        <div class="quiz-step-sub">Roofs of all ages may qualify — let's find out.</div>
         <div class="quiz-options">
-          <div class="quiz-option" data-value="0-5" data-result="soft">
+          <div class="quiz-option" data-value="0-5">
             <div class="quiz-option-label">0–5 Years</div>
-            <div class="quiz-option-sub">Relatively new</div>
+            <div class="quiz-option-sub">Relatively new – still under warranty?</div>
           </div>
-          <div class="quiz-option" data-value="5-10" data-result="qualify">
+          <div class="quiz-option best-candidate" data-value="5-10">
             <div class="quiz-option-label">5–10 Years</div>
-            <div class="quiz-option-sub">Good candidate</div>
+            <div class="quiz-option-sub">Good candidate for rejuvenation</div>
           </div>
-          <div class="quiz-option best-candidate" data-value="10-18" data-result="qualify">
-            <div class="quiz-option-label">10–18 Years</div>
-            <div class="quiz-option-sub">Ideal range</div>
+          <div class="quiz-option best-candidate" data-value="10-22">
+            <div class="quiz-option-label">10–22 Years</div>
+            <div class="quiz-option-sub">Ideal range – most homeowners save the most here</div>
           </div>
-          <div class="quiz-option" data-value="18+" data-result="soft">
-            <div class="quiz-option-label">18+ Years</div>
-            <div class="quiz-option-sub">May need inspection first</div>
+          <div class="quiz-option" data-value="22+">
+            <div class="quiz-option-label">22+ Years</div>
+            <div class="quiz-option-sub">May still qualify – let's check</div>
           </div>
-        </div>
-        <div class="quiz-softdq-msg" id="step1SoftMsg">
-          <p id="step1SoftText"></p>
         </div>
         <div class="quiz-nav">
-          <button class="quiz-btn-next" id="step1Next" disabled>
-            Next <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-          </button>
+          <button class="quiz-btn-next" id="step1Next" disabled>Continue <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
         </div>
       </div>
 
-      <!-- ── STEP 2: Roof Condition ── -->
+      <!-- ── STEP 2: Roof Type ── -->
       <div class="quiz-step" id="quizStep2">
-        <div class="quiz-step-title">Tell us about your roof's condition.</div>
-        <div class="quiz-step-sub">Three quick questions — pick the best answer for each.</div>
-
-        <!-- Shingle type -->
-        <div class="quiz-bool-group">
-          <div class="quiz-bool-question">What type of shingles do you have?</div>
-          <div class="quiz-bool-row" id="shingleRow">
-            <button class="quiz-bool-btn" data-group="shingle" data-value="asphalt">Asphalt</button>
-            <button class="quiz-bool-btn" data-group="shingle" data-value="tile">Tile</button>
-            <button class="quiz-bool-btn" data-group="shingle" data-value="metal">Metal</button>
-            <button class="quiz-bool-btn" data-group="shingle" data-value="other">Other</button>
+        <div class="quiz-step-title">What type of roof material do you have?</div>
+        <div class="quiz-step-sub">Choose the one that best matches your roof.</div>
+        <div class="quiz-type-cards">
+          <div class="quiz-type-card" data-value="asphalt">
+            <span class="quiz-type-card-icon">🏠</span>
+            <div class="quiz-type-card-label">Asphalt Shingles</div>
+            <div class="quiz-type-card-sub">Most common – standard 3-tab or architectural shingles</div>
+          </div>
+          <div class="quiz-type-card" data-value="other">
+            <span class="quiz-type-card-icon">🏗️</span>
+            <div class="quiz-type-card-label">Other</div>
+            <div class="quiz-type-card-sub">Tile, Metal, Slate, Flat / TPO, or not sure</div>
           </div>
         </div>
-
-        <!-- Active leaks -->
-        <div class="quiz-bool-group">
-          <div class="quiz-bool-question">Do you have any active leaks?</div>
-          <div class="quiz-bool-row" id="leakRow">
-            <button class="quiz-bool-btn warn" data-group="leak" data-value="yes">Yes</button>
-            <button class="quiz-bool-btn" data-group="leak" data-value="no">No</button>
-          </div>
-        </div>
-
-        <!-- Granule loss -->
-        <div class="quiz-bool-group">
-          <div class="quiz-bool-question">Have you noticed granules in your gutters or downspouts?</div>
-          <div class="quiz-bool-row" id="granuleRow">
-            <button class="quiz-bool-btn" data-group="granule" data-value="yes">Yes</button>
-            <button class="quiz-bool-btn" data-group="granule" data-value="no">No</button>
-            <button class="quiz-bool-btn" data-group="granule" data-value="unsure">Not Sure</button>
-          </div>
-        </div>
-
         <div class="quiz-nav">
           <button class="quiz-btn-back" id="step2Back">← Back</button>
-          <button class="quiz-btn-next" id="step2Next" disabled>
-            Next <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-          </button>
+          <button class="quiz-btn-next" id="step2Next" disabled>Continue <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
         </div>
       </div>
 
-      <!-- ── STEP 3: Contact Capture ── -->
+      <!-- ── STEP 3: Roof Pitch ── -->
       <div class="quiz-step" id="quizStep3">
-        <div class="quiz-step-title">Almost there — where do we send your results?</div>
-        <div class="quiz-step-sub">We'll review your roof profile and reach out within 24 hours.</div>
+        <div class="quiz-step-title">What's the pitch / slope of your roof?</div>
+        <div class="quiz-step-sub">Pick the diagram that looks most like your roof.</div>
+        <div class="quiz-options" style="grid-template-columns: repeat(3,1fr);">
+          <div class="quiz-option" data-value="low" style="text-align:center; padding:22px 12px;">
+            <svg viewBox="0 0 80 44" width="72" height="40" style="display:block;margin:0 auto 10px;">
+              <polyline points="4,38 40,18 76,38" fill="none" stroke="#4DBFBF" stroke-width="3" stroke-linejoin="round"/>
+              <line x1="4" y1="38" x2="76" y2="38" stroke="rgba(77,191,191,.25)" stroke-width="1.5"/>
+            </svg>
+            <div class="quiz-option-label">Low / Flat</div>
+            <div class="quiz-option-sub">&lt;4/12 – gentle slope</div>
+          </div>
+          <div class="quiz-option best-candidate" data-value="moderate" style="text-align:center; padding:22px 12px;">
+            <svg viewBox="0 0 80 52" width="72" height="48" style="display:block;margin:0 auto 10px;">
+              <polyline points="4,44 40,8 76,44" fill="none" stroke="#4DBFBF" stroke-width="3" stroke-linejoin="round"/>
+              <line x1="4" y1="44" x2="76" y2="44" stroke="rgba(77,191,191,.25)" stroke-width="1.5"/>
+            </svg>
+            <div class="quiz-option-label">Standard</div>
+            <div class="quiz-option-sub">4–8/12 – most common</div>
+          </div>
+          <div class="quiz-option" data-value="steep" style="text-align:center; padding:22px 12px;">
+            <svg viewBox="0 0 80 64" width="72" height="56" style="display:block;margin:0 auto 10px;">
+              <polyline points="12,56 40,4 68,56" fill="none" stroke="#4DBFBF" stroke-width="3" stroke-linejoin="round"/>
+              <line x1="12" y1="56" x2="68" y2="56" stroke="rgba(77,191,191,.25)" stroke-width="1.5"/>
+            </svg>
+            <div class="quiz-option-label">Steep</div>
+            <div class="quiz-option-sub">&gt;8/12 – cathedral style</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" id="step3Back">← Back</button>
+          <button class="quiz-btn-next" id="step3Next" disabled>Continue <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: Current Condition ── -->
+      <div class="quiz-step" id="quizStep4">
+        <div class="quiz-step-title">Any of these issues right now?</div>
+        <div class="quiz-step-sub">Select all that apply — or choose "None of the above."</div>
+        <div class="quiz-options" id="conditionOptions">
+          <div class="quiz-option quiz-option-multi" data-value="leaks" style="position:relative;">
+            <div class="quiz-option-check"></div>
+            <div class="quiz-option-label">Active Leaks</div>
+            <div class="quiz-option-sub">Water coming in during rain</div>
+          </div>
+          <div class="quiz-option quiz-option-multi" data-value="granules" style="position:relative;">
+            <div class="quiz-option-check"></div>
+            <div class="quiz-option-label">Granules in Gutters</div>
+            <div class="quiz-option-sub">Shingle granule loss / shedding</div>
+          </div>
+          <div class="quiz-option quiz-option-multi" data-value="algae" style="position:relative;">
+            <div class="quiz-option-check"></div>
+            <div class="quiz-option-label">Algae / Moss / Streaks</div>
+            <div class="quiz-option-sub">Black streaks or green growth</div>
+          </div>
+          <div class="quiz-option quiz-option-multi" data-value="none" style="position:relative;">
+            <div class="quiz-option-check"></div>
+            <div class="quiz-option-label">None of the Above</div>
+            <div class="quiz-option-sub">Roof looks good overall</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" id="step4Back">← Back</button>
+          <button class="quiz-btn-next" id="step4Next" disabled>Continue <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 5: Contact Info ── -->
+      <div class="quiz-step" id="quizStep5">
+        <div class="quiz-step-title">Almost done! Get your FREE Roof Savings Report</div>
+        <div class="quiz-step-sub">We'll email your personalized report instantly. A specialist will call you within 24 hours to schedule your free 25-point inspection — no obligation.</div>
 
         <div class="quiz-form-row">
           <div class="quiz-form-group">
@@ -1097,52 +1170,55 @@
             <input type="text" class="quiz-input" id="qFirstName" placeholder="Jane" />
           </div>
           <div class="quiz-form-group">
-            <label>Last Name <span class="req">*</span></label>
-            <input type="text" class="quiz-input" id="qLastName" placeholder="Smith" />
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" class="quiz-input" id="qPhone" placeholder="(555) 555-5555" />
           </div>
         </div>
         <div class="quiz-form-row">
           <div class="quiz-form-group">
-            <label>Phone <span class="req">*</span></label>
-            <input type="tel" class="quiz-input" id="qPhone" placeholder="(775) 000-0000" />
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" class="quiz-input" id="qEmail" placeholder="jane@email.com" />
           </div>
           <div class="quiz-form-group">
-            <label>Email</label>
-            <input type="email" class="quiz-input" id="qEmail" placeholder="jane@email.com" />
+            <label>Zip Code <span class="req">*</span></label>
+            <input type="text" class="quiz-input" id="qZip" placeholder="89501" maxlength="10" />
           </div>
         </div>
         <div class="quiz-form-group">
-          <label>Zip Code <span class="req">*</span></label>
-          <input type="text" class="quiz-input" id="qZip" placeholder="89501" maxlength="10" style="max-width:180px;" />
+          <label>Street Address <span style="color:rgba(255,255,255,.35);font-weight:400;">(optional)</span></label>
+          <input type="text" class="quiz-input" id="qAddress" placeholder="123 Main St" />
         </div>
 
-        <div class="quiz-pref-label">I prefer to be contacted by:</div>
+        <div class="quiz-pref-label">Preferred contact method:</div>
         <div class="quiz-pref-chips" id="prefChips">
-          <div class="quiz-pref-chip" data-pref="phone">📞 Phone Call</div>
-          <div class="quiz-pref-chip" data-pref="email">✉️ Email</div>
-          <div class="quiz-pref-chip selected" data-pref="either">Either works</div>
+          <div class="quiz-pref-chip selected" data-value="phone">📞 Phone call (preferred)</div>
+          <div class="quiz-pref-chip" data-value="email">✉️ Email</div>
+          <div class="quiz-pref-chip" data-value="either">Either works</div>
         </div>
 
         <div class="quiz-nav">
-          <button class="quiz-btn-back" id="step3Back">← Back</button>
-          <button class="quiz-btn-next" id="step3Submit">
-            Send My Results →
+          <button class="quiz-btn-back" id="step5Back">← Back</button>
+          <button class="quiz-btn-next" id="step5Submit" style="padding:15px 32px;font-size:16px;">
+            Send My FREE Report →
           </button>
         </div>
       </div>
 
       <!-- ── SUCCESS ── -->
       <div class="quiz-success" id="quizSuccess">
-        <div class="quiz-success-icon" id="quizSuccessIcon">
-          <svg viewBox="0 0 24 24" id="quizSuccessIconSvg"></svg>
+        <div class="quiz-success-icon ok">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="#4DBFBF"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
         </div>
         <h3 id="quizSuccessTitle"></h3>
         <p id="quizSuccessBody"></p>
+        <div class="quiz-success-savings">
+          <strong>While you wait:</strong> Most homeowners in your situation save <strong>$8,000–$12,000</strong> vs. full replacement. Your personalized report will have the exact numbers for your roof.
+        </div>
         <a href="tel:+17753031672" class="quiz-success-cta">
           <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
           (775) 303-1672
         </a>
-        <a href="/appointment" class="quiz-success-alt" id="quizSuccessAlt"></a>
+        <a href="#contact" class="quiz-success-alt">Or book your free inspection →</a>
       </div>
     </div>
   </div>
@@ -1843,164 +1919,124 @@
 
   // ── QUIZ CONTROLLER ──────────────────────────────────────────────
   (function () {
-    let currentStep = 1;
-    const totalSteps = 3;
-
-    // State
-    const state = {
-      ageResult: null,   // 'qualify' | 'soft'
-      ageValue:  null,
-      shingle:   null,
-      leak:      null,
-      granule:   null,
-      contactPref: 'either'
-    };
-
-    const progressFill  = document.getElementById('quizProgressFill');
-    const stepLabel     = document.getElementById('quizStepLabel');
-
-    function setProgress(step) {
-      const pct = Math.round((step / totalSteps) * 100);
-      progressFill.style.width = pct + '%';
-      stepLabel.textContent = `Step ${step} of ${totalSteps}`;
-    }
+    const state = { age: null, roofType: null, pitch: null, conditions: new Set(), contactPref: 'phone' };
 
     function showStep(n) {
       document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-      const el = document.getElementById('quizStep' + n);
-      if (el) el.classList.add('active');
-      currentStep = n;
-      setProgress(n);
+      document.getElementById('quizStep' + n).classList.add('active');
+      document.getElementById('quizProgressFill').style.width = ((n / 5) * 100) + '%';
+      document.getElementById('quizStepLabel').textContent = 'Step ' + n + ' of 5';
+      document.getElementById('quizProgressBar').style.display = '';
+      document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // ── STEP 1: age options ──
-    document.querySelectorAll('#quizStep1 .quiz-option').forEach(opt => {
-      opt.addEventListener('click', () => {
-        document.querySelectorAll('#quizStep1 .quiz-option').forEach(o => o.classList.remove('selected'));
+    // Step 1 — roof age
+    document.querySelectorAll('#quizStep1 .quiz-option').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        document.querySelectorAll('#quizStep1 .quiz-option').forEach(function(o) { o.classList.remove('selected'); });
         opt.classList.add('selected');
-        state.ageValue  = opt.dataset.value;
-        state.ageResult = opt.dataset.result;
-
-        const msg  = document.getElementById('step1SoftMsg');
-        const text = document.getElementById('step1SoftText');
-        if (state.ageResult === 'soft') {
-          msg.style.display = 'block';
-          text.innerHTML = state.ageValue === '0-5'
-            ? '<strong>Your roof may be too new</strong> — but call us and we\'ll confirm. Rejuvenation can still help in some cases.'
-            : '<strong>Your roof may need a full inspection first</strong> — give us a call and we\'ll walk you through the best path forward.';
-        } else {
-          msg.style.display = 'none';
-        }
+        state.age = opt.dataset.value;
         document.getElementById('step1Next').disabled = false;
       });
     });
+    document.getElementById('step1Next').addEventListener('click', function() { showStep(2); });
 
-    document.getElementById('step1Next').addEventListener('click', () => showStep(2));
-
-    // ── STEP 2: bool buttons ──
-    function wireBoolGroup(groupName) {
-      document.querySelectorAll(`[data-group="${groupName}"]`).forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll(`[data-group="${groupName}"]`).forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-          state[groupName] = btn.dataset.value;
-          checkStep2();
-        });
+    // Step 2 — roof type (large cards)
+    document.querySelectorAll('#quizStep2 .quiz-type-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        document.querySelectorAll('#quizStep2 .quiz-type-card').forEach(function(c) { c.classList.remove('selected'); });
+        card.classList.add('selected');
+        state.roofType = card.dataset.value;
+        document.getElementById('step2Next').disabled = false;
       });
-    }
-    wireBoolGroup('shingle');
-    wireBoolGroup('leak');
-    wireBoolGroup('granule');
+    });
+    document.getElementById('step2Back').addEventListener('click', function() { showStep(1); });
+    document.getElementById('step2Next').addEventListener('click', function() { showStep(3); });
 
-    function checkStep2() {
-      const ready = state.shingle && state.leak && state.granule;
-      document.getElementById('step2Next').disabled = !ready;
-    }
+    // Step 3 — pitch
+    document.querySelectorAll('#quizStep3 .quiz-option').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        document.querySelectorAll('#quizStep3 .quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        state.pitch = opt.dataset.value;
+        document.getElementById('step3Next').disabled = false;
+      });
+    });
+    document.getElementById('step3Back').addEventListener('click', function() { showStep(2); });
+    document.getElementById('step3Next').addEventListener('click', function() { showStep(4); });
 
-    document.getElementById('step2Back').addEventListener('click', () => showStep(1));
-    document.getElementById('step2Next').addEventListener('click', () => showStep(3));
+    // Step 4 — conditions (multi-select)
+    document.querySelectorAll('#quizStep4 .quiz-option-multi').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        var val = opt.dataset.value;
+        if (val === 'none') {
+          state.conditions.clear();
+          state.conditions.add('none');
+          document.querySelectorAll('#quizStep4 .quiz-option-multi').forEach(function(o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+        } else {
+          var noneOpt = document.querySelector('#quizStep4 [data-value="none"]');
+          if (noneOpt) noneOpt.classList.remove('selected');
+          state.conditions.delete('none');
+          if (opt.classList.contains('selected')) {
+            opt.classList.remove('selected');
+            state.conditions.delete(val);
+          } else {
+            opt.classList.add('selected');
+            state.conditions.add(val);
+          }
+        }
+        document.getElementById('step4Next').disabled = state.conditions.size === 0;
+      });
+    });
+    document.getElementById('step4Back').addEventListener('click', function() { showStep(3); });
+    document.getElementById('step4Next').addEventListener('click', function() { showStep(5); });
 
-    // ── STEP 3: contact pref chips ──
-    document.querySelectorAll('.quiz-pref-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.quiz-pref-chip').forEach(c => c.classList.remove('selected'));
+    // Step 5 — contact preference chips
+    document.querySelectorAll('#prefChips .quiz-pref-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('#prefChips .quiz-pref-chip').forEach(function(c) { c.classList.remove('selected'); });
         chip.classList.add('selected');
-        state.contactPref = chip.dataset.pref;
+        state.contactPref = chip.dataset.value;
       });
     });
+    document.getElementById('step5Back').addEventListener('click', function() { showStep(4); });
 
-    document.getElementById('step3Back').addEventListener('click', () => showStep(2));
+    // Step 5 — submit
+    document.getElementById('step5Submit').addEventListener('click', function() {
+      var firstName = document.getElementById('qFirstName').value.trim();
+      var phone     = document.getElementById('qPhone').value.trim();
+      var email     = document.getElementById('qEmail').value.trim();
+      var zip       = document.getElementById('qZip').value.trim();
 
-    // ── STEP 3: submit ──
-    document.getElementById('step3Submit').addEventListener('click', () => {
-      const firstName = document.getElementById('qFirstName').value.trim();
-      const lastName  = document.getElementById('qLastName').value.trim();
-      const phone     = document.getElementById('qPhone').value.trim();
-      const zip       = document.getElementById('qZip').value.trim();
-
-      // Highlight missing required fields
-      [['qFirstName', firstName], ['qLastName', lastName], ['qPhone', phone], ['qZip', zip]].forEach(([id, val]) => {
-        const el = document.getElementById(id);
-        el.style.borderColor = val ? '' : '#f87171';
+      var valid = true;
+      [['qFirstName', firstName], ['qPhone', phone], ['qEmail', email], ['qZip', zip]].forEach(function(pair) {
+        var el = document.getElementById(pair[0]);
+        if (!pair[1]) { el.style.borderColor = '#f87171'; valid = false; }
+        else el.style.borderColor = '';
       });
-      if (!firstName || !lastName || !phone || !zip) return;
+      if (!valid) return;
 
-      // Lead routing logic
-      const qualified = (
-        state.ageResult === 'qualify' &&
-        state.shingle === 'asphalt' &&
-        state.leak !== 'yes'
-      );
+      // TODO: send lead to CRM/backend
+      // fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ firstName, phone, email, zip,
+      //     address: document.getElementById('qAddress').value.trim(),
+      //     age: state.age, roofType: state.roofType, pitch: state.pitch,
+      //     conditions: Array.from(state.conditions), contactPref: state.contactPref,
+      //     source: 'website_quiz' }) });
 
-      // TODO: Quote IQ Integration — send quiz lead
-      // await fetch('https://api.quoteiq.com/v1/leads', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer YOUR_KEY' },
-      //   body: JSON.stringify({
-      //     first_name: firstName, last_name: lastName, phone, zip,
-      //     email: document.getElementById('qEmail').value.trim(),
-      //     contact_pref: state.contactPref,
-      //     roof_age: state.ageValue, shingle_type: state.shingle,
-      //     active_leak: state.leak, granule_loss: state.granule,
-      //     qualified, source: 'website_quiz'
-      //   })
-      // });
-
-      // Hide all steps and progress
-      document.querySelector('.quiz-progress').style.display = 'none';
-      document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
-
-      const successEl   = document.getElementById('quizSuccess');
-      const iconEl      = document.getElementById('quizSuccessIcon');
-      const iconSvg     = document.getElementById('quizSuccessIconSvg');
-      const titleEl     = document.getElementById('quizSuccessTitle');
-      const bodyEl      = document.getElementById('quizSuccessBody');
-      const altEl       = document.getElementById('quizSuccessAlt');
-
-      if (qualified) {
-        iconEl.className = 'quiz-success-icon ok';
-        iconSvg.setAttribute('fill', '#4DBFBF');
-        iconSvg.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>';
-        titleEl.textContent = `Great news, ${firstName}!`;
-        bodyEl.textContent  = 'Your roof looks like a strong candidate for rejuvenation. We\'ll review your profile and call you within 24 hours with next steps. In a hurry?';
-        altEl.textContent   = 'Or book a time that works for you →';
-        altEl.href          = '/appointment';
-      } else {
-        iconEl.className = 'quiz-success-icon soft';
-        iconSvg.setAttribute('fill', '#fbbf24');
-        iconSvg.innerHTML = '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>';
-        titleEl.textContent = `Thanks, ${firstName} — we'd love to take a look.`;
-        bodyEl.textContent  = "Based on your answers, we'd want to do a free in-person inspection before recommending a treatment. Book one below — it's completely free.";
-        altEl.textContent   = 'Book your free inspection →';
-        altEl.href          = '#contact';
-      }
-
-      successEl.style.display = 'block';
+      document.getElementById('quizProgressBar').style.display = 'none';
+      document.querySelectorAll('.quiz-step').forEach(function(s) { s.style.display = 'none'; });
+      document.getElementById('quizSuccessTitle').textContent = 'Thank you, ' + firstName + '!';
+      document.getElementById('quizSuccessBody').textContent =
+        'Your personalized Roof Rejuvenation Savings Report is on its way to your email. A specialist will call you within 60 minutes during business hours to answer questions and book your free inspection.';
+      document.getElementById('quizSuccess').style.display = 'block';
     });
 
-    // Clear red on input
-    ['qFirstName','qLastName','qPhone','qZip'].forEach(id => {
-      document.getElementById(id)?.addEventListener('input', e => { e.target.style.borderColor = ''; });
+    // Clear red validation borders on input
+    ['qFirstName','qPhone','qEmail','qZip'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', function(e) { e.target.style.borderColor = ''; });
     });
   })();
   // ─────────────────────────────────────────────────────────────────
