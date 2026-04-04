@@ -351,11 +351,17 @@
       font-family: var(--font-head); font-size: 22px; font-weight: 800;
       color: var(--white); margin-bottom: 28px;
     }
-    .comparison { display: flex; flex-direction: column; gap: 14px; }
-    .comparison-row { display: flex; justify-content: space-between; align-items: center; }
+    .comparison { display: flex; flex-direction: column; gap: 0; }
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 40px 1.2fr;
+      align-items: center;
+      padding: 12px 0;
+    }
     .comparison-row .item { font-size: 14px; color: rgba(255,255,255,.7); }
-    .comparison-row .val-bad  { font-size: 14px; font-weight: 600; color: #f87171; }
-    .comparison-row .val-good { font-size: 14px; font-weight: 600; color: var(--primary); }
+    .comparison-row .val-good { font-size: 14px; font-weight: 600; color: var(--primary); text-align: center; }
+    .comparison-row .vs { font-size: 12px; color: rgba(255,255,255,.3); text-align: center; }
+    .comparison-row .val-bad  { font-size: 14px; font-weight: 600; color: #f87171; text-align: center; }
     .comparison-divider { height: 1px; background: rgba(255,255,255,.08); }
     .why-cta-banner {
       margin-top: 32px; background: rgba(77,191,191,.12);
@@ -899,12 +905,12 @@
       /* blog */
       .blog-grid { grid-template-columns: 1fr; }
 
-      /* comparison table */
-      .comparison-row { flex-wrap: wrap; row-gap: 6px; }
-      .comparison-row .item { width: 100%; font-size: 12px; }
+      /* comparison table — keep grid, just shrink fonts */
+      .comparison-row { grid-template-columns: 1.4fr 1fr 28px 1fr; gap: 0; padding: 10px 0; }
+      .comparison-row .item { font-size: 12px; }
       .comparison-row .val-good,
-      .comparison-row .val-bad { flex: 1; text-align: center; font-size: 13px; }
-      .comparison-row span:nth-child(3) { display: none; }
+      .comparison-row .val-bad { font-size: 12px; }
+      .comparison-row .vs { font-size: 10px; }
     }
     /* ── BLOG SECTION ── */
     .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
@@ -1472,42 +1478,42 @@
             <div class="comparison-row">
               <span class="item">Average Cost</span>
               <span class="val-good">$1,500–$3,500</span>
-              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="vs">vs</span>
               <span class="val-bad">$25,000–$40,000</span>
             </div>
             <div class="comparison-divider"></div>
             <div class="comparison-row">
               <span class="item">Completion Time</span>
               <span class="val-good">1 Day</span>
-              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="vs">vs</span>
               <span class="val-bad">3–7 Days</span>
             </div>
             <div class="comparison-divider"></div>
             <div class="comparison-row">
               <span class="item">Life Extended</span>
               <span class="val-good">10–15 Years</span>
-              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="vs">vs</span>
               <span class="val-bad">20–25 Years</span>
             </div>
             <div class="comparison-divider"></div>
             <div class="comparison-row">
               <span class="item">Landfill Waste</span>
               <span class="val-good">Zero</span>
-              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="vs">vs</span>
               <span class="val-bad">3–5 Tons</span>
             </div>
             <div class="comparison-divider"></div>
             <div class="comparison-row">
               <span class="item">Disruption Level</span>
               <span class="val-good">Minimal</span>
-              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="vs">vs</span>
               <span class="val-bad">Major</span>
             </div>
             <div class="comparison-divider"></div>
             <div class="comparison-row">
               <span class="item">Warranty</span>
               <span class="val-good">6 Years</span>
-              <span style="color:rgba(255,255,255,.3); font-size:13px;">vs</span>
+              <span class="vs">vs</span>
               <span class="val-bad">Varies</span>
             </div>
           </div>
