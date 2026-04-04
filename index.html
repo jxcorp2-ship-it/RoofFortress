@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roof Fortress | Roofing Rejuvenation Experts</title>
+  <title>Roof Fortress | Roof Rejuvenation Experts — Reno, Carson City &amp; Lake Tahoe</title>
+  <meta name="description" content="Extend your roof's life by up to 24 years with GreenSoy™ rejuvenation — 80% cheaper than replacement. Serving Reno, Sparks, Carson City, Incline Village &amp; North Lake Tahoe. Free 25-point inspection." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -856,7 +857,21 @@
       .quiz-bool-btn { flex: 1 1 calc(50% - 5px); }
       /* sticky bar */
       .sticky-bar { display: block; }
+      /* blog */
+      .blog-grid { grid-template-columns: 1fr; }
     }
+    /* ── BLOG SECTION ── */
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
+    .blog-card { background: var(--white); border: 1px solid var(--gray-2); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow var(--transition), transform var(--transition); text-decoration: none; display: flex; flex-direction: column; }
+    .blog-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .blog-card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+    .blog-card-cat { display: inline-block; padding: 3px 12px; background: var(--primary-lt); color: var(--primary-dk); border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 12px; }
+    .blog-card-title { font-family: var(--font-head); font-size: 18px; font-weight: 800; color: var(--secondary); line-height: 1.25; margin-bottom: 10px; }
+    .blog-card-excerpt { font-size: 14px; color: var(--gray-3); line-height: 1.65; flex: 1; margin-bottom: 20px; }
+    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--gray-3); padding-top: 16px; border-top: 1px solid var(--gray-2); }
+    .blog-card-footer .read-link { color: var(--primary-dk); font-weight: 600; display: flex; align-items: center; gap: 4px; transition: color var(--transition); }
+    .blog-card:hover .read-link { color: var(--primary); }
+    @media (max-width: 1024px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
@@ -873,8 +888,8 @@
         <li><a href="#">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#how-it-works">Process</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#why-us">About</a></li>
+        <li><a href="#why-us">Results</a></li>
+        <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-cta">
@@ -893,8 +908,8 @@
     <a href="#">Home</a>
     <a href="#services">Services</a>
     <a href="#how-it-works">Process</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#why-us">About</a>
+    <a href="#why-us">Results</a>
+    <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
     <a href="tel:+17753031672" class="nav-phone" style="margin-top:4px;">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
@@ -1528,6 +1543,52 @@
   </div>
 </section>
 
+<!-- ══ BLOG ══ -->
+<section id="blog">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Roofing Knowledge Base</div>
+      <h2 class="section-title">Guides for Reno &amp; Lake Tahoe Homeowners</h2>
+      <p class="section-sub">Real answers to real roofing questions — written for the Reno, Carson City, and North Tahoe climate.</p>
+    </div>
+    <div class="blog-grid">
+      <a href="blog-roof-maxx-reno.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-cat">Competitor Comparison</span>
+          <div class="blog-card-title">Roof Maxx in Reno, NV: What Local Homeowners Should Know</div>
+          <p class="blog-card-excerpt">Searching for Roof Maxx in Reno? Here's how rejuvenation technology works, what local availability looks like, and what your options are.</p>
+          <div class="blog-card-footer">
+            <span>7 min read</span>
+            <span class="read-link">Read Article <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a href="blog-roof-replacement-cost-reno.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-cat">Cost Guide</span>
+          <div class="blog-card-title">Roof Replacement Cost in Reno, NV — 2025 Price Guide</div>
+          <p class="blog-card-excerpt">What does a roof replacement cost in Reno, Sparks, and Carson City? Real 2025 estimates — plus how to save 80% if your roof qualifies for rejuvenation.</p>
+          <div class="blog-card-footer">
+            <span>8 min read</span>
+            <span class="read-link">Read Article <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+          </div>
+        </div>
+      </a>
+      <a href="blog-lake-tahoe-truckee-roofing.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-card-cat">Mountain Roofing</span>
+          <div class="blog-card-title">Roofing in Lake Tahoe, Truckee &amp; Incline Village: Why Your Roof Ages Faster</div>
+          <p class="blog-card-excerpt">Altitude, UV, freeze-thaw cycles, and 300″ of snow. Here's what actually happens to roofs at 6,000–7,500 ft and what Tahoe homeowners should do about it.</p>
+          <div class="blog-card-footer">
+            <span>9 min read</span>
+            <span class="read-link">Read Article <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ FAQ ══ -->
 <section id="faq">
   <div class="container">
@@ -1759,8 +1820,8 @@
           <a href="#">Home</a>
           <a href="#services">Services</a>
           <a href="#how-it-works">Process</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#why-us">About</a>
+          <a href="#why-us">Results</a>
+          <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -1771,7 +1832,7 @@
         <div class="footer-links">
           <a href="tel:+17753031672">(775) 303-1672</a>
           <a href="mailto:hello@rooffortress.com">hello@rooffortress.com</a>
-          <a href="#" style="color:rgba(255,255,255,.45); cursor:default;">South Lake Tahoe, CA</a>
+          <a href="#" style="color:rgba(255,255,255,.45); cursor:default;">Reno · Carson City · Lake Tahoe</a>
         </div>
       </div>
 
