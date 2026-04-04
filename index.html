@@ -826,11 +826,14 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-      .hero-visual { display: none; }
+      html, body { overflow-x: hidden; }
+      section { padding: 72px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; padding: 60px 0 48px; }
+      .hero-visual { display: flex; justify-content: center; }
+      .hero-card-wrap { max-width: 500px; }
       .hero p { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
-      .hero-trust { justify-content: center; }
+      .hero-trust { justify-content: center; flex-wrap: wrap; gap: 16px; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .how-grid { grid-template-columns: 1fr; }
       .how-visual { display: none; }
@@ -839,6 +842,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .cta-band-inner { flex-direction: column; text-align: center; }
       .cta-actions { align-items: center; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
       /* collapse nav into hamburger at 1024px */
       .nav-links { display: none; }
       .nav-phone { display: none; }
@@ -859,8 +863,7 @@
 
       /* hero */
       .hero { min-height: auto; }
-      .hero-grid { padding: 44px 0 36px; gap: 32px; }
-      .hero-visual { display: flex; } /* show image on mobile */
+      .hero-grid { padding: 44px 0 36px; gap: 28px; }
       .floating-badge { display: none; } /* badges overflow off-screen */
       .hero-main-card { padding: 18px; }
       .hero-card-stat .num { font-size: 22px; }
@@ -923,7 +926,6 @@
     .blog-card-footer { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--gray-3); padding-top: 16px; border-top: 1px solid var(--gray-2); }
     .blog-card-footer .read-link { color: var(--primary-dk); font-weight: 600; display: flex; align-items: center; gap: 4px; transition: color var(--transition); }
     .blog-card:hover .read-link { color: var(--primary); }
-    @media (max-width: 1024px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
