@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25-Point Roof Health Report | Roof Fortress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #4DBFBF;
+      --primary-dk: #3aa8a8;
+      --primary-lt: #e8f7f7;
+      --secondary:  #0D1B2A;
+      --tertiary:   #8B5E3C;
+      --neutral:    #1A1A1A;
+      --gray-1:     #f4f6f8;
+      --gray-2:     #e2e8ed;
+      --gray-3:     #9aa5b4;
+      --white:      #ffffff;
+      --radius:     6px;
+      --radius-lg:  12px;
+      --font-head:  'Manrope', sans-serif;
+      --font-body:  'Inter', sans-serif;
+      --shadow-sm:  0 1px 4px rgba(13,27,42,.08);
+      --shadow-md:  0 4px 20px rgba(13,27,42,.12);
+      --shadow-lg:  0 12px 48px rgba(13,27,42,.16);
+      --transition: 0.22s ease;
+      --score-color: #4DBFBF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--neutral);
+      background: var(--gray-1);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOOLBAR ── */
+    .toolbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--secondary);
+      border-bottom: 1px solid rgba(77,191,191,.2);
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+    }
+    .toolbar-inner {
+      max-width: 1180px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .toolbar-brand {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .toolbar-logo {
+      height: 36px; width: 36px; object-fit: contain; border-radius: var(--radius);
+    }
+    .toolbar-logo-text {
+      font-family: var(--font-head); font-weight: 800; font-size: 17px;
+      color: var(--white);
+    }
+    .toolbar-divider {
+      width: 1px; height: 20px; background: rgba(255,255,255,.2); margin: 0 4px;
+    }
+    .toolbar-title {
+      font-family: var(--font-head); font-weight: 600; font-size: 13px;
+      color: var(--primary); letter-spacing: .04em; text-transform: uppercase;
+    }
+    .toolbar-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-tool {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--radius);
+      font-family: var(--font-body); font-weight: 600; font-size: 13px;
+      cursor: pointer; border: none; transition: all var(--transition);
+      text-decoration: none;
+    }
+    .btn-tool-ghost {
+      background: rgba(255,255,255,.08); color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .btn-tool-ghost:hover { background: rgba(255,255,255,.15); color: var(--white); }
+    .btn-tool-primary {
+      background: var(--primary); color: var(--secondary);
+      box-shadow: 0 2px 10px rgba(77,191,191,.35);
+    }
+    .btn-tool-primary:hover { background: var(--primary-dk); transform: translateY(-1px); }
+    .btn-tool svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── REPORT WRAPPER ── */
+    .report-wrap {
+      max-width: 1100px; margin: 0 auto;
+      padding: 80px 24px 48px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white); border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-2); box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--gray-2);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-header-icon {
+      width: 30px; height: 30px; border-radius: var(--radius);
+      background: var(--primary-lt);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .card-header-icon svg { width: 16px; height: 16px; fill: var(--primary); }
+    .card-header-title {
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      color: var(--secondary); letter-spacing: .06em; text-transform: uppercase;
+    }
+    .card-header-badge {
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+    }
+    .badge-internal {
+      background: #fff3e0; color: #e65100;
+      border: 1px solid #ffe0b2;
+    }
+    .card-body { padding: 28px; }
+
+    /* ── REPORT HEADER ── */
+    .report-header-top {
+      background: linear-gradient(135deg, var(--secondary) 0%, #112233 60%, #1a3a4a 100%);
+      padding: 32px 28px 28px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
+      position: relative; overflow: hidden;
+    }
+    .report-header-top::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234DBFBF' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .rh-brand { display: flex; align-items: center; gap: 12px; position: relative; }
+    .rh-logo { height: 44px; width: 44px; object-fit: contain; border-radius: var(--radius); }
+    .rh-brand-text {}
+    .rh-brand-name {
+      font-family: var(--font-head); font-weight: 800; font-size: 20px;
+      color: var(--white); line-height: 1.1;
+    }
+    .rh-brand-name span { color: var(--primary); }
+    .rh-brand-sub {
+      font-size: 11px; color: rgba(255,255,255,.45);
+      letter-spacing: .08em; text-transform: uppercase; margin-top: 2px;
+    }
+    .rh-title-block { text-align: right; position: relative; }
+    .rh-report-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 4px;
+    }
+    .rh-report-title {
+      font-family: var(--font-head); font-size: 22px; font-weight: 800;
+      color: var(--white); line-height: 1.1;
+    }
+    .rh-report-title span { color: var(--primary); }
+    .report-meta {
+      padding: 20px 28px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+      border-bottom: 1px solid var(--gray-2);
+    }
+    .report-meta-2col { grid-template-columns: repeat(2, 1fr); }
+    .meta-group { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--gray-3);
+    }
+    .meta-input {
+      font-family: var(--font-body); font-size: 14px; color: var(--neutral);
+      border: none; border-bottom: 1.5px solid var(--gray-2);
+      background: transparent; outline: none; width: 100%; padding: 3px 0;
+      transition: border-color var(--transition);
+    }
+    .meta-input:focus { border-color: var(--primary); }
+    .meta-input::placeholder { color: var(--gray-3); font-style: italic; }
+    select.meta-input {
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%239aa5b4'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 2px center;
+      padding-right: 16px;
+    }
+
+    /* ── SCORE SECTION ── */
+    .score-section {
+      padding: 28px;
+      display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
+    }
+    .score-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .score-ring {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--score-color);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 8px rgba(77,191,191,.12), 0 8px 32px rgba(77,191,191,.25);
+      transition: background .4s ease, box-shadow .4s ease;
+      position: relative;
+    }
+    .score-ring-number {
+      font-family: var(--font-head); font-size: 44px; font-weight: 800;
+      color: var(--white); line-height: 1;
+    }
+    .score-ring-label {
+      font-size: 10px; font-weight: 700; color: rgba(255,255,255,.7);
+      letter-spacing: .08em; text-transform: uppercase; margin-top: 1px;
+    }
+    .score-input-wrap { margin-top: 8px; }
+    .score-input {
+      width: 80px; text-align: center;
+      font-family: var(--font-head); font-size: 13px; font-weight: 600;
+      color: var(--secondary); border: 1.5px solid var(--gray-2);
+      border-radius: var(--radius); padding: 5px 8px; outline: none;
+      transition: border-color var(--transition);
+    }
+    .score-input:focus { border-color: var(--primary); }
+    .score-auto-btn {
+      display: block; margin-top: 6px; font-size: 11px; font-weight: 600;
+      color: var(--primary); background: none; border: none; cursor: pointer;
+      text-align: center; width: 80px;
+    }
+    .score-auto-btn:hover { text-decoration: underline; }
+    .score-details-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .score-detail-item {}
+    .score-detail-label {
+      font-size: 10px; font-weight: 700; color: var(--gray-3);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .score-detail-input {
+      font-family: var(--font-body); font-size: 14px; color: var(--neutral);
+      border: none; border-bottom: 1.5px solid var(--gray-2);
+      background: transparent; outline: none; width: 100%; padding: 3px 0;
+      transition: border-color var(--transition);
+    }
+    .score-detail-input:focus { border-color: var(--primary); }
+    .score-detail-input::placeholder { color: var(--gray-3); font-style: italic; }
+    select.score-detail-input {
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%239aa5b4'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 2px center;
+      padding-right: 16px;
+    }
+    .score-condition-badge {
+      padding: 10px 20px; border-radius: var(--radius);
+      font-family: var(--font-head); font-size: 14px; font-weight: 700;
+      background: var(--primary-lt); color: var(--primary-dk);
+      border: 1px solid rgba(77,191,191,.3);
+      transition: all .4s ease;
+      white-space: nowrap;
+    }
+    .score-bar-wrap { grid-column: 1/-1; }
+    .score-bar-track {
+      height: 8px; background: var(--gray-2); border-radius: 100px; overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%; border-radius: 100px;
+      background: var(--score-color);
+      width: 0%; transition: width .6s ease, background .4s ease;
+    }
+    .score-bar-labels {
+      display: flex; justify-content: space-between;
+      font-size: 10px; color: var(--gray-3); margin-top: 5px; font-weight: 600;
+    }
+
+    /* ── GREENSOY BANNER ── */
+    .greensoy-banner {
+      margin: 0 28px 0;
+      border-radius: var(--radius); padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border: 1.5px solid;
+      transition: all .3s ease;
+    }
+    .greensoy-banner.eligible {
+      background: var(--primary-lt);
+      border-color: rgba(77,191,191,.4);
+    }
+    .greensoy-banner.not-eligible {
+      background: var(--gray-1);
+      border-color: var(--gray-2);
+    }
+    .greensoy-left { display: flex; align-items: center; gap: 12px; }
+    .greensoy-icon {
+      width: 36px; height: 36px; border-radius: var(--radius); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .eligible .greensoy-icon { background: rgba(77,191,191,.2); }
+    .not-eligible .greensoy-icon { background: var(--gray-2); }
+    .greensoy-icon svg { width: 18px; height: 18px; }
+    .eligible .greensoy-icon svg { fill: var(--primary); }
+    .not-eligible .greensoy-icon svg { fill: var(--gray-3); }
+    .greensoy-text {}
+    .greensoy-title {
+      font-family: var(--font-head); font-size: 14px; font-weight: 700;
+    }
+    .eligible .greensoy-title { color: var(--primary-dk); }
+    .not-eligible .greensoy-title { color: var(--gray-3); }
+    .greensoy-sub { font-size: 12px; line-height: 1.4; margin-top: 2px; }
+    .eligible .greensoy-sub { color: #2d9c9c; }
+    .not-eligible .greensoy-sub { color: var(--gray-3); }
+    .greensoy-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; flex-shrink: 0; }
+    .greensoy-toggle input[type="checkbox"] { display: none; }
+    .toggle-track {
+      width: 40px; height: 22px; border-radius: 100px;
+      background: var(--gray-2); position: relative;
+      transition: background .3s ease; cursor: pointer;
+    }
+    .eligible .toggle-track { background: var(--primary); }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--white); box-shadow: 0 1px 3px rgba(0,0,0,.2);
+      transition: left .3s ease;
+    }
+    .eligible .toggle-thumb { left: 21px; }
+    .toggle-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--gray-3);
+    }
+    .eligible .toggle-label { color: var(--primary-dk); }
+
+    /* ── EXEC SUMMARY ── */
+    .exec-body { padding: 24px 28px 28px; }
+    .exec-intro {
+      font-size: 15px; color: var(--neutral); line-height: 1.7;
+      padding: 14px 16px; background: var(--gray-1); border-radius: var(--radius);
+      border-left: 3px solid var(--primary); margin-bottom: 20px;
+    }
+    .exec-intro textarea {
+      width: 100%; background: transparent; border: none; outline: none;
+      font-family: var(--font-body); font-size: 15px; color: var(--neutral);
+      line-height: 1.7; resize: vertical; min-height: 64px;
+    }
+    .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 0; }
+    .exec-col {}
+    .exec-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--gray-3); margin-bottom: 10px;
+    }
+    .critical-list { display: flex; flex-direction: column; gap: 8px; }
+    .critical-item {
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .critical-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #ef4444; flex-shrink: 0; margin-top: 6px;
+    }
+    .critical-item input {
+      flex: 1; font-family: var(--font-body); font-size: 14px;
+      color: var(--neutral); border: none; border-bottom: 1.5px solid var(--gray-2);
+      background: transparent; outline: none; padding: 3px 0;
+      transition: border-color var(--transition);
+    }
+    .critical-item input:focus { border-color: var(--primary); }
+    .critical-item input::placeholder { color: var(--gray-3); font-style: italic; }
+    .rec-select-wrap { display: flex; flex-direction: column; gap: 14px; }
+    .rec-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .rec-field {}
+    .rec-field label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--gray-3);
+      margin-bottom: 5px;
+    }
+    .rec-input {
+      width: 100%; font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      color: var(--neutral); border: 1.5px solid var(--gray-2);
+      border-radius: var(--radius); padding: 9px 12px; outline: none;
+      background: var(--white); transition: border-color var(--transition);
+    }
+    .rec-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(77,191,191,.12); }
+    select.rec-input {
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%239aa5b4'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 10px center;
+      padding-right: 30px;
+    }
+    .savings-display {
+      background: var(--secondary);
+      border-radius: var(--radius); padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .savings-label { font-size: 12px; color: rgba(255,255,255,.5); }
+    .savings-value {
+      font-family: var(--font-head); font-size: 24px; font-weight: 800;
+      color: var(--primary);
+    }
+    .savings-prefix { font-size: 16px; font-weight: 600; }
+
+    /* ── CHECKLIST TABLE ── */
+    .checklist-body { padding: 0; }
+    .checklist-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .checklist-table th {
+      font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--gray-3); padding: 10px 12px;
+      background: var(--gray-1); border-bottom: 2px solid var(--gray-2);
+      text-align: left; white-space: nowrap;
+    }
+    .checklist-table th:first-child { width: 40px; text-align: center; }
+    .checklist-table th.col-cond { width: 110px; }
+    .checklist-table th.col-sev  { width: 110px; }
+    .checklist-table th.col-photo { width: 80px; }
+    .checklist-table td {
+      padding: 8px 12px; border-bottom: 1px solid var(--gray-2);
+      font-size: 13px; color: var(--neutral); vertical-align: middle;
+    }
+    .checklist-table td:first-child {
+      text-align: center; font-family: var(--font-head); font-weight: 700;
+      font-size: 12px; color: var(--gray-3);
+    }
+    .checklist-table tr:last-child td { border-bottom: none; }
+    .checklist-table tr:hover td { background: #fafbfc; }
+
+    /* Category header rows */
+    .cat-row td {
+      background: var(--secondary) !important;
+      padding: 8px 12px;
+      font-family: var(--font-head); font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--primary);
+    }
+    .cat-row:hover td { background: var(--secondary) !important; }
+
+    /* Table selects & inputs */
+    .tbl-select {
+      width: 100%; font-family: var(--font-body); font-size: 12px; font-weight: 600;
+      color: var(--neutral); border: 1.5px solid var(--gray-2); border-radius: var(--radius);
+      padding: 5px 22px 5px 8px; outline: none; background: var(--white);
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%239aa5b4'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 6px center;
+      transition: border-color var(--transition);
+    }
+    .tbl-select:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(77,191,191,.12); }
+    .tbl-select.cond-good  { color: #16a34a; border-color: #bbf7d0; background-color: #f0fdf4; }
+    .tbl-select.cond-fair  { color: #d97706; border-color: #fed7aa; background-color: #fffbeb; }
+    .tbl-select.cond-poor  { color: #dc2626; border-color: #fecaca; background-color: #fef2f2; }
+    .tbl-select.cond-na    { color: var(--gray-3); }
+    .tbl-select.sev-low    { color: #16a34a; }
+    .tbl-select.sev-med    { color: #d97706; }
+    .tbl-select.sev-high   { color: #dc2626; }
+    .tbl-select.sev-na     { color: var(--gray-3); }
+    .tbl-input {
+      width: 100%; font-family: var(--font-body); font-size: 12px;
+      color: var(--neutral); border: 1.5px solid transparent;
+      border-radius: var(--radius); padding: 5px 6px; outline: none;
+      background: transparent; transition: border-color var(--transition), background var(--transition);
+    }
+    .tbl-input:focus { border-color: var(--gray-2); background: var(--white); }
+    .tbl-input::placeholder { color: var(--gray-3); font-style: italic; }
+
+    /* Point label */
+    .point-name { font-size: 13px; color: var(--neutral); font-weight: 500; }
+
+    /* ── FINDINGS ── */
+    .findings-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .finding-block {}
+    .finding-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .finding-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .finding-dot.high { background: #ef4444; }
+    .finding-dot.med  { background: #f59e0b; }
+    .finding-dot.low  { background: #22c55e; }
+    .finding-label.high { color: #dc2626; }
+    .finding-label.med  { color: #d97706; }
+    .finding-label.low  { color: #16a34a; }
+    .finding-textarea {
+      width: 100%; min-height: 100px; font-family: var(--font-body); font-size: 13px;
+      color: var(--neutral); border: 1.5px solid var(--gray-2); border-radius: var(--radius);
+      padding: 10px 12px; outline: none; resize: vertical; line-height: 1.6;
+      transition: border-color var(--transition);
+    }
+    .finding-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(77,191,191,.12); }
+    .finding-textarea::placeholder { color: var(--gray-3); font-style: italic; font-size: 12px; }
+
+    .greensoy-eligibility-block {
+      margin-top: 20px; padding: 16px; border-radius: var(--radius);
+      background: var(--primary-lt); border: 1px solid rgba(77,191,191,.3);
+    }
+    .ge-title {
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      color: var(--primary-dk); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ge-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+    }
+    .ge-badge.yes { background: var(--primary); color: var(--white); }
+    .ge-badge.no  { background: var(--gray-2); color: var(--gray-3); }
+    .ge-desc { font-size: 13px; color: var(--neutral); line-height: 1.6; }
+    .ge-textarea {
+      width: 100%; margin-top: 10px; min-height: 52px;
+      font-family: var(--font-body); font-size: 13px; color: var(--neutral);
+      border: 1.5px solid rgba(77,191,191,.3); border-radius: var(--radius);
+      padding: 8px 10px; outline: none; resize: vertical;
+      background: rgba(255,255,255,.7);
+      transition: border-color var(--transition);
+    }
+    .ge-textarea:focus { border-color: var(--primary); }
+    .ge-textarea::placeholder { color: var(--gray-3); font-style: italic; }
+
+    /* ── RECOMMENDATIONS ── */
+    .recs-list { display: flex; flex-direction: column; gap: 16px; }
+    .rec-step { display: flex; gap: 14px; align-items: flex-start; }
+    .rec-step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--primary-lt); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 800; font-size: 14px;
+      color: var(--primary);
+    }
+    .rec-step-body { flex: 1; padding-top: 4px; }
+    .rec-step-title {
+      font-family: var(--font-head); font-size: 14px; font-weight: 700;
+      color: var(--secondary); margin-bottom: 4px;
+    }
+    .rec-step-input {
+      width: 100%; font-family: var(--font-body); font-size: 13px;
+      color: var(--neutral); border: none; border-bottom: 1.5px solid var(--gray-2);
+      background: transparent; outline: none; padding: 3px 0;
+      transition: border-color var(--transition);
+    }
+    .rec-step-input:focus { border-color: var(--primary); }
+    .rec-step-input::placeholder { color: var(--gray-3); font-style: italic; }
+    .warranty-badge {
+      margin-top: 20px; padding: 14px 18px;
+      background: linear-gradient(135deg, var(--secondary) 0%, #1a3a4a 100%);
+      border-radius: var(--radius); display: flex; align-items: center; gap: 14px;
+    }
+    .warranty-icon {
+      width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--radius);
+      background: rgba(77,191,191,.15); border: 1px solid rgba(77,191,191,.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .warranty-icon svg { width: 20px; height: 20px; fill: var(--primary); }
+    .warranty-text {}
+    .warranty-title {
+      font-family: var(--font-head); font-size: 14px; font-weight: 800;
+      color: var(--white);
+    }
+    .warranty-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 1px; }
+
+    /* ── INTERNAL NOTES ── */
+    .internal-header { background: #fff8f0; }
+    .internal-header .card-header-icon { background: #fef3e2; }
+    .internal-header .card-header-icon svg { fill: #e65100; }
+    .internal-note-area {
+      width: 100%; min-height: 120px;
+      font-family: var(--font-body); font-size: 14px; color: var(--neutral);
+      border: 1.5px solid var(--gray-2); border-radius: var(--radius);
+      padding: 12px 14px; outline: none; resize: vertical; line-height: 1.7;
+      transition: border-color var(--transition);
+    }
+    .internal-note-area:focus { border-color: #e65100; box-shadow: 0 0 0 3px rgba(230,81,0,.08); }
+    .internal-note-area::placeholder { color: var(--gray-3); font-style: italic; }
+    .internal-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .int-field {}
+    .int-field label {
+      display: block; font-size: 10px; font-weight: 700;
+      letter-spacing: .09em; text-transform: uppercase; color: var(--gray-3); margin-bottom: 5px;
+    }
+    .int-input {
+      width: 100%; font-family: var(--font-body); font-size: 13px; color: var(--neutral);
+      border: 1.5px solid var(--gray-2); border-radius: var(--radius);
+      padding: 7px 10px; outline: none; background: var(--white);
+      transition: border-color var(--transition);
+    }
+    .int-input:focus { border-color: #e65100; }
+    .int-input::placeholder { color: var(--gray-3); font-style: italic; }
+
+    /* ── DISCLAIMERS ── */
+    .disclaimer-text {
+      font-size: 12px; color: var(--gray-3); line-height: 1.7;
+      padding: 16px 20px; background: var(--gray-1); border-radius: var(--radius);
+      border: 1px solid var(--gray-2);
+    }
+
+    /* ── SIGNATURES ── */
+    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .sig-block { display: flex; flex-direction: column; gap: 6px; }
+    .sig-label { font-size: 11px; font-weight: 700; color: var(--gray-3); letter-spacing: .08em; text-transform: uppercase; }
+    .sig-line {
+      width: 100%; height: 44px; border: none; border-bottom: 2px solid var(--secondary);
+      background: transparent; display: block;
+    }
+    .sig-sub { font-size: 12px; color: var(--gray-3); }
+    .sig-date-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .sig-date-label { font-size: 12px; color: var(--gray-3); white-space: nowrap; }
+    .sig-date-input {
+      flex: 1; font-family: var(--font-body); font-size: 13px; color: var(--neutral);
+      border: none; border-bottom: 1.5px solid var(--gray-2); background: transparent;
+      outline: none; padding: 3px 0; transition: border-color var(--transition);
+    }
+    .sig-date-input:focus { border-color: var(--primary); }
+
+    /* ── FOOTER STRIP ── */
+    .report-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 28px;
+      border-top: 1px solid var(--gray-2);
+      background: var(--gray-1);
+    }
+    .report-footer-logo { display: flex; align-items: center; gap: 8px; }
+    .report-footer-logo img { height: 24px; width: 24px; object-fit: contain; border-radius: 4px; }
+    .report-footer-logo span { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--gray-3); }
+    .report-footer-url { font-size: 12px; color: var(--gray-3); }
+    .report-footer-page { font-size: 11px; color: var(--gray-3); }
+
+    /* ── ADDRESS AUTOCOMPLETE ── */
+    .pac-container {
+      font-family: var(--font-body) !important;
+      border: 1.5px solid var(--gray-2) !important;
+      border-radius: var(--radius) !important;
+      box-shadow: var(--shadow-md) !important;
+      margin-top: 4px !important;
+      z-index: 9999 !important;
+    }
+    .pac-item {
+      font-size: 13px !important; color: var(--neutral) !important;
+      padding: 9px 12px !important; cursor: pointer !important;
+      border-top: 1px solid var(--gray-2) !important; line-height: 1.4 !important;
+    }
+    .pac-item:first-child { border-top: none !important; }
+    .pac-item:hover, .pac-item-selected { background: var(--primary-lt) !important; }
+    .pac-item-query { font-weight: 600 !important; color: var(--secondary) !important; font-size: 13px !important; }
+    .pac-matched { color: var(--primary) !important; font-weight: 700 !important; }
+    .pac-icon { display: none !important; }
+
+    /* State pricing badge */
+    .state-pricing-badge {
+      display: none; align-items: center; gap: 5px;
+      padding: 3px 9px; border-radius: 100px;
+      font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      margin-top: 5px; width: fit-content; transition: all .25s ease;
+    }
+    .state-pricing-badge.visible { display: inline-flex; }
+    .state-badge-ca { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .state-badge-nv { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .state-badge-warn { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .state-badge-other { background: var(--gray-1); color: var(--gray-3); border: 1px solid var(--gray-2); }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      @page { margin: 0.6in 0.65in; size: letter; }
+
+      body { background: white; }
+
+      .toolbar, .no-print { display: none !important; }
+
+      .report-wrap {
+        padding: 0; gap: 12px;
+        max-width: 100%;
+      }
+
+      .card {
+        box-shadow: none;
+        border: 1px solid #d0d5dc;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Inputs in print look like filled text */
+      .meta-input, .score-detail-input, .rec-step-input,
+      .sig-date-input, .int-input {
+        border: none !important;
+        border-bottom: 1px solid #ccc !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding-bottom: 1px !important;
+      }
+      select.meta-input, select.score-detail-input {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        background-image: none !important;
+        padding-right: 0 !important;
+      }
+      .rec-input { border: 1px solid #ddd !important; box-shadow: none !important; }
+      select.rec-input { appearance: none !important; -webkit-appearance: none !important; background-image: none !important; }
+
+      .tbl-select {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        background-image: none !important;
+      }
+      .tbl-input { border: none !important; background: transparent !important; }
+      .finding-textarea, .internal-note-area, .ge-textarea {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        resize: none !important;
+      }
+      .exec-intro textarea { resize: none !important; }
+
+      /* Score ring color prints */
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+      .score-input-wrap, .score-auto-btn { display: none; }
+
+      .checklist-table { font-size: 11px; }
+      .checklist-table td { padding: 6px 8px; }
+      .checklist-table th { padding: 7px 8px; font-size: 9px; }
+
+      .report-footer { background: white; border-top: 1px solid #eee; }
+
+      /* Keep internal section visible but mark clearly */
+      .internal-header { background: #fff8f0 !important; }
+
+      /* Section breaks */
+      .checklist-card { page-break-before: always; }
+      .findings-card, .recs-card { break-before: auto; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .report-meta { grid-template-columns: repeat(2, 1fr); }
+      .score-section { grid-template-columns: auto 1fr; gap: 20px; }
+      .score-condition-badge { display: none; }
+      .exec-grid { grid-template-columns: 1fr; }
+      .findings-grid { grid-template-columns: 1fr; }
+      .internal-fields { grid-template-columns: 1fr 1fr; }
+      .sig-grid { grid-template-columns: 1fr; }
+      .score-details-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TOOLBAR (screen only – hidden on print)
+════════════════════════════════════════════════════════════════ -->
+<div class="toolbar no-print">
+  <div class="toolbar-inner">
+    <div class="toolbar-brand">
+      <img src="Brand_assets/logo.png" alt="Roof Fortress" class="toolbar-logo" />
+      <span class="toolbar-logo-text">Roof Fortress</span>
+      <div class="toolbar-divider"></div>
+      <span class="toolbar-title">25-Point Roof Health Report</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool btn-tool-ghost" onclick="resetForm()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+        Reset Form
+      </button>
+      <button class="btn-tool btn-tool-primary" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REPORT
+════════════════════════════════════════════════════════════════ -->
+<div class="report-wrap">
+
+  <!-- ── HEADER CARD ── -->
+  <div class="card">
+    <!-- Brand bar -->
+    <div class="report-header-top">
+      <div class="rh-brand">
+        <img src="Brand_assets/logo.png" alt="Roof Fortress" class="rh-logo" />
+        <div class="rh-brand-text">
+          <div class="rh-brand-name">Roof <span>Fortress</span></div>
+          <div class="rh-brand-sub">rooffortress.com</div>
+        </div>
+      </div>
+      <div class="rh-title-block">
+        <div class="rh-report-label">Official Inspection Document</div>
+        <div class="rh-report-title">25-Point Roof <span>Health Report</span></div>
+      </div>
+    </div>
+
+    <!-- Meta row 1: date, inspector, client, street address -->
+    <div class="report-meta">
+      <div class="meta-group">
+        <span class="meta-label">Date</span>
+        <input type="date" class="meta-input" id="meta-date" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Inspector</span>
+        <input type="text" class="meta-input" placeholder="Name / Tech ID" id="meta-inspector" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Client Name</span>
+        <input type="text" class="meta-input" placeholder="Full name" id="meta-client" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Street Address</span>
+        <input type="text" class="meta-input" placeholder="Start typing address…" id="meta-address"
+               autocomplete="off" />
+      </div>
+    </div>
+
+    <!-- Meta row 1b: city, state (auto-filled + pricing badge), zip -->
+    <div class="report-meta" style="border-bottom:none; border-top:1px solid var(--gray-2); grid-template-columns: 2fr 1fr 1fr 1fr;">
+      <div class="meta-group">
+        <span class="meta-label">City</span>
+        <input type="text" class="meta-input" placeholder="Auto-filled" id="meta-city" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">State</span>
+        <input type="text" class="meta-input" placeholder="—" id="meta-state" maxlength="2"
+               style="text-transform:uppercase;" oninput="onStateManualEdit(this.value)" />
+        <span class="state-pricing-badge" id="statePricingBadge"></span>
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">ZIP Code</span>
+        <input type="text" class="meta-input" placeholder="Auto-filled" id="meta-zip" maxlength="10" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Report ID / Job #</span>
+        <input type="text" class="meta-input" placeholder="e.g. RF-2025-0042" id="meta-jobid-top" />
+      </div>
+    </div>
+
+    <!-- Meta row 2: roof details -->
+    <div class="report-meta" style="border-bottom:none;">
+      <div class="meta-group">
+        <span class="meta-label">Roof Type</span>
+        <select class="meta-input" id="meta-type">
+          <option value="">Select…</option>
+          <option>Asphalt Shingle</option>
+          <option>Tile (Concrete)</option>
+          <option>Tile (Clay)</option>
+          <option>Metal</option>
+          <option>Flat / TPO</option>
+          <option>Modified Bitumen</option>
+          <option>Wood Shake</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Roof Age (years)</span>
+        <input type="number" class="meta-input" placeholder="e.g. 14" min="0" max="100" id="meta-age" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Pitch</span>
+        <input type="text" class="meta-input" placeholder="e.g. 5/12" id="meta-pitch" />
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Sq Ft</span>
+        <input type="number" class="meta-input" placeholder="e.g. 2,400" id="meta-sqft" />
+      </div>
+    </div>
+
+    <!-- Meta row 3: weather, method, photos -->
+    <div class="report-meta report-meta-2col" style="border-bottom:none; border-top:1px solid var(--gray-2);">
+      <div class="meta-group">
+        <span class="meta-label">Weather / Conditions</span>
+        <select class="meta-input" id="meta-weather">
+          <option value="">Select…</option>
+          <option>Clear / Dry</option>
+          <option>Overcast</option>
+          <option>Light Breeze</option>
+          <option>Post-Rain (dry surface)</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="meta-group">
+        <span class="meta-label">Inspection Method</span>
+        <input type="text" class="meta-input" placeholder="e.g. Visual + Ladder + Drone" id="meta-method" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCORE CARD ── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <span class="card-header-title">Roof Health Score &amp; Condition</span>
+    </div>
+    <div class="score-section">
+      <!-- Score Ring -->
+      <div class="score-ring-wrap">
+        <div class="score-ring" id="scoreRing">
+          <span class="score-ring-number" id="scoreDisplay">—</span>
+          <span class="score-ring-label">/ 100</span>
+        </div>
+        <div class="score-input-wrap">
+          <input type="number" class="score-input" id="scoreInput" placeholder="0–100" min="0" max="100"
+                 oninput="updateScore(this.value, false)" />
+          <button class="score-auto-btn" onclick="autoCalculateScore()" title="Calculate from checklist">&#8635; Auto-calc</button>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="score-details-grid">
+        <div class="score-detail-item">
+          <div class="score-detail-label">Estimated Remaining Life</div>
+          <input type="text" class="score-detail-input" placeholder="e.g. 8–12 years" id="meta-life" />
+        </div>
+        <div class="score-detail-item">
+          <div class="score-detail-label">Overall Condition</div>
+          <select class="score-detail-input" id="meta-condition">
+            <option value="">Select…</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Fair</option>
+            <option>Poor</option>
+          </select>
+        </div>
+        <div class="score-detail-item">
+          <div class="score-detail-label">Total Photos Taken</div>
+          <input type="number" class="score-detail-input" placeholder="e.g. 24" min="0" id="meta-photos" />
+        </div>
+        <div class="score-detail-item">
+          <div class="score-detail-label">Report ID / Job #</div>
+          <input type="text" class="score-detail-input" placeholder="e.g. RF-2025-0042" id="meta-jobid" />
+        </div>
+        <!-- Bar spans full width -->
+        <div class="score-bar-wrap">
+          <div class="score-bar-track">
+            <div class="score-bar-fill" id="scoreBarFill"></div>
+          </div>
+          <div class="score-bar-labels">
+            <span>0 – Poor</span><span>50 – Fair</span><span>75 – Good</span><span>100 – Excellent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Condition Badge -->
+      <div class="score-condition-badge" id="conditionBadge">Enter Score</div>
+    </div>
+
+    <!-- GreenSoy Banner -->
+    <div class="greensoy-banner eligible" id="greensoyBanner" style="margin-bottom:20px;">
+      <div class="greensoy-left">
+        <div class="greensoy-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-10 8-1.14 2.86-1.9 5.43-2.45 7.51A16.83 16.83 0 0 1 8 18.5c.53-2.27 1.41-5.08 2.67-7.76A13.22 13.22 0 0 1 17 8z"/></svg>
+        </div>
+        <div class="greensoy-text">
+          <div class="greensoy-title" id="greensoyTitle">GreenSoy™ Rejuvenation — Eligible</div>
+          <div class="greensoy-sub" id="greensoySub">Save ~80% vs. full replacement · Same-day service · 6-Year Warranty included</div>
+        </div>
+      </div>
+      <label class="greensoy-toggle" title="Toggle GreenSoy eligibility">
+        <input type="checkbox" id="greensoyCheck" onchange="toggleGreensoy(this.checked)" checked />
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-label" id="greensoyToggleLabel">Eligible</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── EXECUTIVE SUMMARY ── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      </div>
+      <span class="card-header-title">Executive Summary</span>
+    </div>
+    <div class="exec-body">
+      <div class="exec-intro">
+        <textarea id="exec-text" rows="3" placeholder="Your roof was inspected today using our proven 25-point process. [Summarize overall condition, main takeaway, and whether GreenSoy™ rejuvenation is recommended. Keep it customer-friendly and positive.]">Your roof was inspected today using our proven 25-point process. </textarea>
+      </div>
+
+      <div class="exec-grid">
+        <!-- Critical Issues -->
+        <div class="exec-col">
+          <div class="exec-label">Critical Issues Identified</div>
+          <div class="critical-list">
+            <div class="critical-item">
+              <div class="critical-dot"></div>
+              <input type="text" placeholder="Issue 1 (leave blank if none)" />
+            </div>
+            <div class="critical-item">
+              <div class="critical-dot"></div>
+              <input type="text" placeholder="Issue 2" />
+            </div>
+            <div class="critical-item">
+              <div class="critical-dot"></div>
+              <input type="text" placeholder="Issue 3" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="exec-col">
+          <div class="exec-label">Recommendation &amp; Savings</div>
+          <div class="rec-select-wrap">
+            <div class="rec-row">
+              <div class="rec-field">
+                <label>Recommendation</label>
+                <select class="rec-input" id="recAction">
+                  <option value="">Select…</option>
+                  <option>GreenSoy™ Rejuvenation</option>
+                  <option>Monitor — Re-inspect in 6 months</option>
+                  <option>Preventative Treatment</option>
+                  <option>Partial Replacement + Rejuvenation</option>
+                  <option>Full Roof Replacement</option>
+                </select>
+              </div>
+              <div class="rec-field">
+                <label>Urgency</label>
+                <select class="rec-input">
+                  <option value="">Select…</option>
+                  <option>Immediate</option>
+                  <option>Within 30 days</option>
+                  <option>Within 90 days</option>
+                  <option>This season</option>
+                  <option>Next 12 months</option>
+                </select>
+              </div>
+            </div>
+            <div class="savings-display">
+              <div>
+                <div class="savings-label">Estimated Customer Savings vs. Replacement</div>
+                <div class="savings-value">
+                  <span class="savings-prefix">$</span><input type="number"
+                    style="background:transparent;border:none;border-bottom:1px solid rgba(77,191,191,.4);color:var(--primary);font-family:var(--font-head);font-size:24px;font-weight:800;width:120px;outline:none;padding:0 2px;"
+                    placeholder="0" id="savingsInput" />
+                </div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;">vs. full replacement</div>
+                <div style="font-family:var(--font-head);font-size:18px;font-weight:700;color:#22c55e;margin-top:2px;">~80% Savings</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 25-POINT CHECKLIST ── -->
+  <div class="card checklist-card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+      <span class="card-header-title">25-Point Inspection Checklist</span>
+      <div class="card-header-badge" style="background:var(--primary-lt);color:var(--primary-dk);border:1px solid rgba(77,191,191,.3);">
+        <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:var(--primary);"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+        Auto-score enabled
+      </div>
+    </div>
+    <div class="checklist-body">
+      <table class="checklist-table" id="checklistTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Inspection Point</th>
+            <th class="col-cond">Condition</th>
+            <th class="col-sev">Severity</th>
+            <th class="col-photo">Photo #</th>
+            <th>Notes / Action Required</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- STRUCTURAL INTEGRITY -->
+          <tr class="cat-row">
+            <td colspan="6">Structural Integrity</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><span class="point-name">Roof decking &amp; sheathing</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="1"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><span class="point-name">Rafters, trusses &amp; sagging</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="2"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><span class="point-name">Attic moisture &amp; leak stains</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="3"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><span class="point-name">Soft spots &amp; deck integrity</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="4"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><span class="point-name">Ventilation (soffit &amp; ridge)</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="5"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+
+          <!-- ROOFING MATERIALS -->
+          <tr class="cat-row">
+            <td colspan="6">Roofing Materials</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><span class="point-name">Granule loss – field shingles</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="6"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><span class="point-name">Shingle curling, lifting &amp; brittleness</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="7"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><span class="point-name">Missing or damaged shingles</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="8"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><span class="point-name">UV &amp; age-related degradation</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="9"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><span class="point-name">Low-slope / flat section integrity</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="10"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+
+          <!-- FLASHINGS & SEALS -->
+          <tr class="cat-row">
+            <td colspan="6">Flashings &amp; Seals</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td><span class="point-name">Ridge, hip &amp; valley flashing</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="11"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td><span class="point-name">Step flashing (walls &amp; chimney)</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="12"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td><span class="point-name">Drip edge &amp; eave metal</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="13"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td><span class="point-name">Pipe boots &amp; penetrations</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="14"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td><span class="point-name">Skylight &amp; vent seals</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="15"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+
+          <!-- DRAINAGE & PERIMETER -->
+          <tr class="cat-row">
+            <td colspan="6">Drainage &amp; Perimeter</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td><span class="point-name">Gutters &amp; downspouts</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="16"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td><span class="point-name">Debris &amp; granules in gutters</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="17"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td><span class="point-name">Moss &amp; algae growth</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="18"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td><span class="point-name">Tree limb &amp; overhang damage</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="19"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td><span class="point-name">Ice dam &amp; snow retention risk</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="20"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+
+          <!-- ADDITIONAL VULNERABILITIES -->
+          <tr class="cat-row">
+            <td colspan="6">Additional Vulnerabilities</td>
+          </tr>
+          <tr>
+            <td>21</td>
+            <td><span class="point-name">Chimney flashing &amp; crown</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="21"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>22</td>
+            <td><span class="point-name">Satellite &amp; TV mount penetrations</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="22"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>23</td>
+            <td><span class="point-name">Exhaust vents condition</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="23"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>24</td>
+            <td><span class="point-name">Underlayment visible wear</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="24"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+          <tr>
+            <td>25</td>
+            <td><span class="point-name">Overall system failure risk</span></td>
+            <td><select class="tbl-select" onchange="onCondChange(this)" data-point="25"><option value="">—</option><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option><option value="na">N/A</option></select></td>
+            <td><select class="tbl-select" onchange="onSevChange(this)"><option value="">—</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option><option value="na">N/A</option></select></td>
+            <td><input type="text" class="tbl-input" placeholder="#" /></td>
+            <td><input type="text" class="tbl-input" placeholder="Observations / action…" /></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── DETAILED FINDINGS ── -->
+  <div class="card findings-card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+      </div>
+      <span class="card-header-title">Detailed Findings Summary</span>
+    </div>
+    <div class="card-body">
+      <div class="findings-grid">
+        <div class="finding-block">
+          <div class="finding-label high"><div class="finding-dot high"></div>Major Issues — High Severity</div>
+          <textarea class="finding-textarea" placeholder="List all high-severity findings here. Include location, estimated extent, and recommended action…"></textarea>
+        </div>
+        <div class="finding-block">
+          <div class="finding-label med"><div class="finding-dot med"></div>Moderate Issues — Medium Severity</div>
+          <textarea class="finding-textarea" placeholder="List moderate issues. These should be addressed within 30–90 days to prevent escalation…"></textarea>
+        </div>
+        <div class="finding-block">
+          <div class="finding-label low"><div class="finding-dot low"></div>Minor / Maintenance Items</div>
+          <textarea class="finding-textarea" placeholder="Routine maintenance items, minor wear, or preventative notes. Monitor at next inspection…"></textarea>
+        </div>
+      </div>
+
+      <!-- GreenSoy Eligibility Block -->
+      <div class="greensoy-eligibility-block" id="findingsGSBlock">
+        <div class="ge-title">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--primary);flex-shrink:0;"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-10 8-1.14 2.86-1.9 5.43-2.45 7.51A16.83 16.83 0 0 1 8 18.5c.53-2.27 1.41-5.08 2.67-7.76A13.22 13.22 0 0 1 17 8z"/></svg>
+          GreenSoy™ Rejuvenation Eligibility:
+          <span class="ge-badge yes" id="geEligBadge">Yes — Qualified</span>
+        </div>
+        <p class="ge-desc">
+          GreenSoy™ restores flexibility and UV resistance to aged shingles, seals micro-vulnerabilities, and extends roof life by 6+ years — all without tear-off, mess, or multi-day disruption. Same-day application with a 6-Year Written Warranty.
+        </p>
+        <textarea class="ge-textarea" placeholder="Additional eligibility notes (e.g., specific areas to treat, areas to skip, client concerns addressed…)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RECOMMENDATIONS & NEXT STEPS ── -->
+  <div class="card recs-card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <span class="card-header-title">Recommendations &amp; Next Steps</span>
+    </div>
+    <div class="card-body">
+      <div class="recs-list">
+        <div class="rec-step">
+          <div class="rec-step-num">1</div>
+          <div class="rec-step-body">
+            <div class="rec-step-title">Custom Treatment Plan &amp; On-Site Quote</div>
+            <input type="text" class="rec-step-input" placeholder="e.g. Full GreenSoy™ rejuvenation + pipe boot seals + gutter flush — quote provided today at $___" />
+          </div>
+        </div>
+        <div class="rec-step">
+          <div class="rec-step-num">2</div>
+          <div class="rec-step-body">
+            <div class="rec-step-title">Post-Treatment Report &amp; 12-Month Follow-Up</div>
+            <input type="text" class="rec-step-input" placeholder="e.g. Detailed post-treatment report delivered within 48 hrs. Follow-up inspection scheduled for ___" />
+          </div>
+        </div>
+        <div class="rec-step">
+          <div class="rec-step-num">3</div>
+          <div class="rec-step-body">
+            <div class="rec-step-title">6-Year Warranty on All Rejuvenation Work</div>
+            <input type="text" class="rec-step-input" placeholder="e.g. Written 6-year warranty issued upon treatment completion. Covers all GreenSoy™ treated surfaces." />
+          </div>
+        </div>
+        <div class="rec-step">
+          <div class="rec-step-num">4</div>
+          <div class="rec-step-body">
+            <div class="rec-step-title">Additional Notes / Custom Action Item</div>
+            <input type="text" class="rec-step-input" placeholder="Any property-specific recommendation, referral, or follow-up item…" />
+          </div>
+        </div>
+      </div>
+
+      <div class="warranty-badge">
+        <div class="warranty-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        </div>
+        <div class="warranty-text">
+          <div class="warranty-title">6-Year Written Warranty — Backed by Roof Fortress</div>
+          <div class="warranty-sub">All GreenSoy™ rejuvenation work is covered by our industry-leading 6-year written warranty. No exceptions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TECHNICIAN NOTES (Internal) ── -->
+  <div class="card">
+    <div class="card-header internal-header">
+      <div class="card-header-icon" style="background:#fef3e2;">
+        <svg viewBox="0 0 24 24" style="fill:#e65100 !important;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </div>
+      <span class="card-header-title" style="color:#bf360c;">Technician Notes</span>
+      <div class="card-header-badge badge-internal">Internal Use Only</div>
+    </div>
+    <div class="card-body">
+      <textarea class="internal-note-area" placeholder="Detailed measurements, moisture meter readings, drone footage links, access notes, safety observations, office follow-ups, material quantities, pricing notes, or anything not included in the customer-facing report…"></textarea>
+      <div class="internal-fields">
+        <div class="int-field">
+          <label>Moisture Reading</label>
+          <input type="text" class="int-input" placeholder="e.g. 14% — ridge zone" />
+        </div>
+        <div class="int-field">
+          <label>Drone Footage Link</label>
+          <input type="text" class="int-input" placeholder="Drive / Dropbox URL…" />
+        </div>
+        <div class="int-field">
+          <label>Estimated Material Needed</label>
+          <input type="text" class="int-input" placeholder="e.g. 2 gal GreenSoy™, 2 boots" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DISCLAIMERS ── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      </div>
+      <span class="card-header-title">Disclaimers</span>
+    </div>
+    <div class="card-body">
+      <div class="disclaimer-text">
+        <strong>Visual Inspection Only.</strong> This report is based solely on a visual inspection of observable roof conditions and does not constitute a structural engineering assessment. Concealed defects, internal damage not visible from the surface, or conditions that develop after the inspection date are not covered. <strong>Not a guarantee of leak-free performance.</strong> Findings and recommendations reflect conditions observed at the time of inspection only. Roof Fortress recommends addressing all identified issues promptly to prevent escalation. This report is not transferable and is prepared exclusively for the named property owner. All estimates and savings projections are approximate and subject to on-site verification.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIGNATURES ── -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+      </div>
+      <span class="card-header-title">Signatures &amp; Acknowledgment</span>
+    </div>
+    <div class="card-body">
+      <div class="sig-grid">
+        <div class="sig-block">
+          <div class="sig-label">Technician / Inspector Signature</div>
+          <div class="sig-line"></div>
+          <div class="sig-sub">Print Name: <input type="text" style="border:none;border-bottom:1px solid var(--gray-2);outline:none;font-family:var(--font-body);font-size:13px;padding:1px 4px;width:180px;" placeholder="Full name" /></div>
+          <div class="sig-date-row">
+            <span class="sig-date-label">Date:</span>
+            <input type="date" class="sig-date-input" />
+          </div>
+        </div>
+        <div class="sig-block">
+          <div class="sig-label">Client Acknowledgment</div>
+          <div class="sig-line"></div>
+          <div class="sig-sub">Print Name: <input type="text" style="border:none;border-bottom:1px solid var(--gray-2);outline:none;font-family:var(--font-body);font-size:13px;padding:1px 4px;width:180px;" placeholder="Full name" /></div>
+          <div class="sig-date-row">
+            <span class="sig-date-label">Date:</span>
+            <input type="date" class="sig-date-input" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer strip -->
+    <div class="report-footer">
+      <div class="report-footer-logo">
+        <img src="Brand_assets/logo.png" alt="Roof Fortress" />
+        <span>Roof Fortress — rooffortress.com</span>
+      </div>
+      <div class="report-footer-page" style="font-size:11px;color:var(--gray-3);">
+        25-Point Roof Health Report &nbsp;|&nbsp; Confidential
+      </div>
+    </div>
+  </div>
+
+</div><!-- /report-wrap -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════════════ -->
+<script>
+  /* ── Score logic ── */
+  const scoreColors = {
+    excellent: '#22c55e',
+    good:      '#4DBFBF',
+    fair:      '#f59e0b',
+    poor:      '#ef4444',
+    none:      '#9aa5b4'
+  };
+
+  function getScoreLevel(val) {
+    if (val >= 80) return 'excellent';
+    if (val >= 65) return 'good';
+    if (val >= 50) return 'fair';
+    return 'poor';
+  }
+
+  function getScoreLabel(level) {
+    return { excellent: 'Excellent', good: 'Good', fair: 'Fair', poor: 'Poor', none: 'Enter Score' }[level];
+  }
+
+  function updateScore(val, fromAuto) {
+    const ring    = document.getElementById('scoreRing');
+    const display = document.getElementById('scoreDisplay');
+    const bar     = document.getElementById('scoreBarFill');
+    const badge   = document.getElementById('conditionBadge');
+    const inp     = document.getElementById('scoreInput');
+
+    if (!fromAuto && inp) inp.value = val;
+
+    const num = parseInt(val, 10);
+    if (isNaN(num) || val === '') {
+      ring.style.setProperty('--score-color', scoreColors.none);
+      ring.style.background = scoreColors.none;
+      ring.style.boxShadow = '0 0 0 8px rgba(154,165,180,.1), 0 8px 32px rgba(154,165,180,.15)';
+      display.textContent = '—';
+      bar.style.width = '0%';
+      bar.style.background = scoreColors.none;
+      badge.textContent = 'Enter Score';
+      badge.style.background = '#f4f6f8';
+      badge.style.color = '#9aa5b4';
+      badge.style.border = '1px solid #e2e8ed';
+      return;
+    }
+
+    const clamped = Math.min(100, Math.max(0, num));
+    const level   = getScoreLevel(clamped);
+    const color   = scoreColors[level];
+    const label   = getScoreLabel(level);
+
+    ring.style.background = color;
+    const alpha = level === 'none' ? '0.1' : '0.15';
+    ring.style.boxShadow = `0 0 0 8px ${color}26, 0 8px 32px ${color}40`;
+    display.textContent = clamped;
+    bar.style.width = clamped + '%';
+    bar.style.background = color;
+    badge.textContent = label;
+
+    const bgMap = { excellent:'#f0fdf4', good:'#e8f7f7', fair:'#fffbeb', poor:'#fef2f2' };
+    const coMap = { excellent:'#16a34a', good:'#2d9c9c', fair:'#d97706', poor:'#dc2626' };
+    const boMap = { excellent:'#bbf7d0', good:'rgba(77,191,191,.4)', fair:'#fed7aa', poor:'#fecaca' };
+    badge.style.background = bgMap[level];
+    badge.style.color = coMap[level];
+    badge.style.border = `1px solid ${boMap[level]}`;
+
+    document.documentElement.style.setProperty('--score-color', color);
+  }
+
+  /* ── Auto-calculate score from checklist ── */
+  function autoCalculateScore() {
+    const selects = document.querySelectorAll('[data-point]');
+    let total = 0, count = 0;
+    selects.forEach(s => {
+      const v = s.value;
+      if (v === 'good')      { total += 4; count++; }
+      else if (v === 'fair') { total += 2; count++; }
+      else if (v === 'poor') { total += 0; count++; }
+      // na = skip
+    });
+    if (count === 0) {
+      alert('Please fill in at least some condition ratings in the checklist first.');
+      return;
+    }
+    const score = Math.round((total / (count * 4)) * 100);
+    document.getElementById('scoreInput').value = score;
+    updateScore(score, true);
+  }
+
+  /* ── Condition select color ── */
+  function onCondChange(sel) {
+    sel.className = 'tbl-select';
+    if (sel.value === 'good') sel.classList.add('cond-good');
+    else if (sel.value === 'fair') sel.classList.add('cond-fair');
+    else if (sel.value === 'poor') sel.classList.add('cond-poor');
+    else if (sel.value === 'na')   sel.classList.add('cond-na');
+  }
+
+  /* ── Severity select color ── */
+  function onSevChange(sel) {
+    sel.className = 'tbl-select';
+    if (sel.value === 'low')  sel.classList.add('sev-low');
+    else if (sel.value === 'med')  sel.classList.add('sev-med');
+    else if (sel.value === 'high') sel.classList.add('sev-high');
+    else if (sel.value === 'na')   sel.classList.add('sev-na');
+  }
+
+  /* ── GreenSoy toggle ── */
+  function toggleGreensoy(checked) {
+    const banner  = document.getElementById('greensoyBanner');
+    const title   = document.getElementById('greensoyTitle');
+    const sub     = document.getElementById('greensoySub');
+    const tlabel  = document.getElementById('greensoyToggleLabel');
+    const badge   = document.getElementById('geEligBadge');
+
+    if (checked) {
+      banner.className = 'greensoy-banner eligible';
+      title.textContent = 'GreenSoy™ Rejuvenation — Eligible';
+      sub.textContent = 'Save ~80% vs. full replacement · Same-day service · 6-Year Warranty included';
+      tlabel.textContent = 'Eligible';
+      badge.className = 'ge-badge yes';
+      badge.textContent = 'Yes — Qualified';
+    } else {
+      banner.className = 'greensoy-banner not-eligible';
+      title.textContent = 'GreenSoy™ Rejuvenation — Not Currently Eligible';
+      sub.textContent = 'Roof may require structural repair or replacement before rejuvenation is applicable.';
+      tlabel.textContent = 'Not Eligible';
+      badge.className = 'ge-badge no';
+      badge.textContent = 'No';
+    }
+  }
+
+  /* ── Reset form ── */
+  function resetForm() {
+    if (!confirm('Reset all fields? This will clear the entire report.')) return;
+    document.querySelectorAll('input[type="text"], input[type="number"], input[type="date"]').forEach(el => el.value = '');
+    document.querySelectorAll('textarea').forEach(el => el.value = '');
+    document.querySelectorAll('select').forEach(el => {
+      el.selectedIndex = 0;
+      el.className = el.className.includes('tbl-select') ? 'tbl-select' : el.className;
+    });
+    document.getElementById('scoreInput').value = '';
+    updateScore('', false);
+    document.getElementById('greensoyCheck').checked = true;
+    toggleGreensoy(true);
+  }
+
+  /* ── Address Autocomplete ── */
+  function initAutocomplete() {
+    const input = document.getElementById('meta-address');
+    if (!input || !window.google) return;
+
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ['address'],
+      componentRestrictions: { country: 'us' },
+      fields: ['address_components'],
+      // Bias results toward CA + NV
+      bounds: new google.maps.LatLngBounds(
+        new google.maps.LatLng(32.53, -124.48),
+        new google.maps.LatLng(42.01, -114.03)
+      )
+    });
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (!place.address_components) return;
+
+      let streetNum = '', route = '', city = '', state = '', zip = '';
+      place.address_components.forEach(c => {
+        const t = c.types;
+        if (t.includes('street_number'))               streetNum = c.long_name;
+        if (t.includes('route'))                       route     = c.long_name;
+        if (t.includes('locality'))                    city      = c.long_name;
+        if (t.includes('administrative_area_level_1')) state     = c.short_name;
+        if (t.includes('postal_code'))                 zip       = c.long_name;
+      });
+
+      input.value = [streetNum, route].filter(Boolean).join(' ');
+      document.getElementById('meta-city').value  = city;
+      document.getElementById('meta-state').value = state;
+      document.getElementById('meta-zip').value   = zip;
+      updateStateBadge(state);
+    });
+  }
+
+  function updateStateBadge(state) {
+    const badge = document.getElementById('statePricingBadge');
+    if (!state) { badge.className = 'state-pricing-badge'; return; }
+
+    badge.className = 'state-pricing-badge visible';
+    const s = state.toUpperCase();
+    if (s === 'CA') {
+      badge.className += ' state-badge-ca';
+      badge.textContent = 'CA Pricing';
+    } else if (s === 'NV') {
+      badge.className += ' state-badge-nv';
+      badge.textContent = 'NV Pricing';
+    } else {
+      badge.className += ' state-badge-warn';
+      badge.textContent = s + ' — Check Pricing';
+    }
+  }
+
+  function onStateManualEdit(val) {
+    updateStateBadge(val.trim());
+  }
+
+  /* ── Set today's date by default ── */
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('meta-date').value = today;
+
+  /* ── Scrolled nav for toolbar ── */
+  window.addEventListener('scroll', () => {
+    document.querySelector('.toolbar').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.4)' : '0 2px 16px rgba(0,0,0,.3)';
+  });
+</script>
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  GOOGLE PLACES API — Replace YOUR_API_KEY below with your key   ║
+  ║  Get one at: console.cloud.google.com → Maps → Places API       ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+</body>
+</html>
