@@ -848,7 +848,7 @@
       section { padding: 56px 0; }
 
       /* nav — hide the CTA button, sticky bar handles it */
-      .nav-cta .btn { display: none; }
+      .nav-cta { display: none; }
       .nav-logo { font-size: 17px; }
 
       /* hero */
@@ -898,6 +898,13 @@
 
       /* blog */
       .blog-grid { grid-template-columns: 1fr; }
+
+      /* comparison table */
+      .comparison-row { flex-wrap: wrap; row-gap: 6px; }
+      .comparison-row .item { width: 100%; font-size: 12px; }
+      .comparison-row .val-good,
+      .comparison-row .val-bad { flex: 1; text-align: center; font-size: 13px; }
+      .comparison-row span:nth-child(3) { display: none; }
     }
     /* ── BLOG SECTION ── */
     .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
