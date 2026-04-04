@@ -219,17 +219,11 @@
     }
     .hero-card-roof {
       width: 100%; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #1e3a4a 0%, #2d5a6e 50%, var(--primary) 100%);
       border-radius: var(--radius); margin-bottom: 20px;
-      display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
     }
-    .hero-card-roof svg { width: 80px; height: 80px; fill: rgba(255,255,255,.2); }
-    .hero-card-roof::after {
-      content: 'BEFORE → AFTER';
-      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-      background: rgba(0,0,0,.5); color: var(--primary); font-size: 11px;
-      font-weight: 700; letter-spacing: .1em; padding: 4px 12px; border-radius: 100px;
+    .hero-card-roof img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
     .hero-card-stat { display: flex; justify-content: space-between; gap: 16px; }
     .hero-stat-item { text-align: center; }
@@ -961,7 +955,7 @@
           </div>
           <div class="hero-main-card">
             <div class="hero-card-roof">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L12 3l9 9v9H3V12z"/></svg>
+              <img src="Brand_assets/before-after.jpg" alt="Weathered roof before and after GreenSoy™ Restoration Treatment" />
             </div>
             <div class="hero-card-stat">
               <div class="hero-stat-item">
@@ -1248,7 +1242,7 @@
         </div>
         <h3>Roof Rejuvenation Treatment</h3>
         <p>Powered by patented GreenSoy™ Technology — developed with Iowa State University — our deep-penetrating treatment restores shingle flexibility and waterproofing, adding at least 6 guaranteed years per application. Up to 4 treatments possible.</p>
-        <a href="#contact" class="service-link">Learn more →</a>
+        <a href="service-rejuvenation.html" class="service-link">Learn more →</a>
       </div>
 
       <div class="service-card">
@@ -1257,7 +1251,7 @@
         </div>
         <h3>Protective Roof Coating</h3>
         <p>A seamless elastomeric coating that reflects UV rays, prevents water infiltration, and adds a durable waterproof membrane over your existing roof structure.</p>
-        <a href="#contact" class="service-link">Learn more →</a>
+        <a href="service-coating.html" class="service-link">Learn more →</a>
       </div>
 
       <div class="service-card">
@@ -1266,7 +1260,7 @@
         </div>
         <h3>Comprehensive Roof Inspection</h3>
         <p>Detailed 25-point inspection with photographic documentation. We identify vulnerabilities, granule loss, and moisture damage before they become catastrophic failures.</p>
-        <a href="#contact" class="service-link">Learn more →</a>
+        <a href="service-inspection.html" class="service-link">Learn more →</a>
       </div>
 
       <div class="service-card">
@@ -1275,7 +1269,7 @@
         </div>
         <h3>Leak Detection & Repair</h3>
         <p>Advanced moisture mapping and targeted repair services to stop leaks at the source. We fix problem areas without the cost and disruption of a full replacement.</p>
-        <a href="#contact" class="service-link">Learn more →</a>
+        <a href="service-leak-repair.html" class="service-link">Learn more →</a>
       </div>
 
       <div class="service-card">
@@ -1284,7 +1278,7 @@
         </div>
         <h3>Algae & Moss Removal</h3>
         <p>Professional bio-wash treatments that eliminate algae, moss, and lichen growth — restoring your roof's appearance and preventing the structural damage they cause over time.</p>
-        <a href="#contact" class="service-link">Learn more →</a>
+        <a href="service-algae-removal.html" class="service-link">Learn more →</a>
       </div>
 
       <div class="service-card">
@@ -1293,7 +1287,7 @@
         </div>
         <h3>Maintenance Plans</h3>
         <p>Annual maintenance programs that keep your roof protected year-round. Regular treatments, inspections, and priority service to maximize your roof's longevity.</p>
-        <a href="#contact" class="service-link">Learn more →</a>
+        <a href="service-maintenance.html" class="service-link">Learn more →</a>
       </div>
 
     </div>
