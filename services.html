@@ -7,6 +7,16 @@
   <title>Roof Rejuvenation Services — Inspection, Repair &amp; Maintenance | Roof Fortress</title>
   <meta name="description" content="GreenSoy™ roof rejuvenation, 25-point inspections, leak repair, algae removal &amp; maintenance plans for Reno, Carson City and Lake Tahoe homeowners. Free estimates." />
   <link rel="canonical" href="https://www.rooffortress.com/services.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.rooffortress.com/services.html" />
+  <meta property="og:title" content="Roof Rejuvenation Services — Inspection, Repair &amp; Maintenance | Roof Fortress" />
+  <meta property="og:description" content="GreenSoy™ roof rejuvenation, 25-point inspections, leak repair, algae removal &amp; maintenance plans for Reno, Carson City and Lake Tahoe homeowners. Free estimates." />
+  <meta property="og:image" content="https://www.rooffortress.com/Brand_assets/before-after.jpg" />
+  <meta property="og:site_name" content="Roof Fortress" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roof Rejuvenation Services — Inspection, Repair &amp; Maintenance | Roof Fortress" />
+  <meta name="twitter:description" content="GreenSoy™ roof rejuvenation, 25-point inspections, leak repair, algae removal &amp; maintenance plans for Reno, Carson City and Lake Tahoe homeowners. Free estimates." />
+  <meta name="twitter:image" content="https://www.rooffortress.com/Brand_assets/before-after.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -171,7 +181,7 @@
 
     /* ── SERVICES HERO (page-specific) ── */
     .services-hero {
-      padding-top: 68px;
+      padding-top: 0;
       background: linear-gradient(160deg, var(--secondary) 0%, #112233 55%, #1a3a4a 100%);
       min-height: 62vh;
       display: flex; align-items: center;
@@ -495,6 +505,16 @@
       .services-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rooffortress.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.rooffortress.com/services.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -503,7 +523,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" />
+        <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" width="42" height="42" />
         Roof Fortress
       </a>
       <ul class="nav-links">
@@ -538,6 +558,16 @@
       (775) 303-1672
     </a>
     <a href="index.html#contact" class="btn btn-primary">Schedule Free Inspection</a>
+  </div>
+</nav>
+
+<nav aria-label="Breadcrumb" style="background:var(--gray-1);border-bottom:1px solid var(--gray-2);padding:78px 0 12px;">
+  <div class="container">
+    <ol style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:6px;font-size:13px;font-family:var(--font-body);color:var(--gray-3);">
+      <li><a href="index.html" style="color:var(--gray-3);text-decoration:none;">Home</a></li>
+      <li aria-hidden="true">›</li>
+      <li style="color:var(--neutral);" aria-current="page">Services</li>
+    </ol>
   </div>
 </nav>
 
@@ -886,7 +916,7 @@
       <!-- Col 1: Brand -->
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" />
+          <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" width="42" height="42" loading="lazy" />
           Roof Fortress
         </a>
         <p class="footer-tagline">Restore Your Roof. Skip the Replacement.</p>

@@ -7,6 +7,16 @@
   <title>Terms of Service | Roof Fortress</title>
   <meta name="description" content="Roof Fortress terms of service — the agreement governing use of our website and roofing services." />
   <link rel="canonical" href="https://www.rooffortress.com/terms-of-service.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.rooffortress.com/terms-of-service.html" />
+  <meta property="og:title" content="Terms of Service | Roof Fortress" />
+  <meta property="og:description" content="Roof Fortress terms of service — the agreement governing use of our website and roofing services." />
+  <meta property="og:image" content="https://www.rooffortress.com/Brand_assets/before-after.jpg" />
+  <meta property="og:site_name" content="Roof Fortress" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Terms of Service | Roof Fortress" />
+  <meta name="twitter:description" content="Roof Fortress terms of service — the agreement governing use of our website and roofing services." />
+  <meta name="twitter:image" content="https://www.rooffortress.com/Brand_assets/before-after.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -33,7 +43,7 @@
     .nav-back svg { width: 16px; height: 16px; fill: currentColor; }
 
     /* HERO */
-    .page-hero { padding-top: 68px; background: linear-gradient(160deg, var(--secondary) 0%, #112233 60%, #1a3a4a 100%); }
+    .page-hero { padding-top: 0; background: linear-gradient(160deg, var(--secondary) 0%, #112233 60%, #1a3a4a 100%); }
     .page-hero-inner { padding: 56px 0 48px; }
     .page-hero h1 { font-family: var(--font-head); font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
     .page-hero p { font-size: 16px; color: rgba(255,255,255,.55); }
@@ -61,6 +71,16 @@
       .legal-body { padding: 44px 0 60px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rooffortress.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://www.rooffortress.com/terms-of-service.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -68,7 +88,7 @@
   <div class="container" style="max-width:1140px;">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" />
+        <img src="Brand_assets/logo.png" alt="Roof Fortress" class="nav-logo-img" width="42" height="42" />
         Roof Fortress
       </a>
       <a href="index.html" class="nav-back">
@@ -76,6 +96,16 @@
         Back to Home
       </a>
     </div>
+  </div>
+</nav>
+
+<nav aria-label="Breadcrumb" style="background:var(--gray-1);border-bottom:1px solid var(--gray-2);padding:78px 0 12px;">
+  <div class="container">
+    <ol style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:6px;font-size:13px;font-family:var(--font-body);color:var(--gray-3);">
+      <li><a href="index.html" style="color:var(--gray-3);text-decoration:none;">Home</a></li>
+      <li aria-hidden="true">›</li>
+      <li style="color:var(--neutral);" aria-current="page">Terms of Service</li>
+    </ol>
   </div>
 </nav>
 
@@ -157,6 +187,7 @@
 <footer>
   <div class="container" style="max-width:1140px;">
     <p>&copy; 2026 Roof Fortress. All Rights Reserved. &nbsp;·&nbsp;
+      <a href="services.html">Services</a> &nbsp;·&nbsp;
       <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
       <a href="terms-of-service.html">Terms of Service</a>
     </p>
